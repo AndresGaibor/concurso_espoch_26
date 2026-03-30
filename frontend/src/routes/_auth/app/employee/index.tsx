@@ -361,7 +361,7 @@ function EmployeeDashboardPage() {
 			{/* Accesos rápidos */}
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 				<Card className="hover:shadow-md transition-shadow cursor-pointer">
-					<Link to="/_auth/app/employee/attendance">
+					<Link to="/app/employee/attendance">
 						<CardHeader>
 							<CardTitle className="flex items-center gap-2">
 								<Clock className="h-5 w-5" />
@@ -375,7 +375,7 @@ function EmployeeDashboardPage() {
 				</Card>
 
 				<Card className="hover:shadow-md transition-shadow cursor-pointer">
-					<Link to="/_auth/app/employee/absences">
+					<Link to="/app/employee/absences">
 						<CardHeader>
 							<CardTitle className="flex items-center gap-2">
 								<Calendar className="h-5 w-5" />
@@ -387,7 +387,7 @@ function EmployeeDashboardPage() {
 				</Card>
 
 				<Card className="hover:shadow-md transition-shadow cursor-pointer">
-					<Link to="/_auth/app/employee/absences/new">
+					<Link to="/app/employee/absences/new">
 						<CardHeader>
 							<CardTitle className="flex items-center gap-2">
 								<AlertCircle className="h-5 w-5" />
@@ -401,7 +401,7 @@ function EmployeeDashboardPage() {
 				</Card>
 
 				<Card className="hover:shadow-md transition-shadow cursor-pointer">
-					<Link to="/_auth/app/employee/history">
+					<Link to="/app/employee/history">
 						<CardHeader>
 							<CardTitle className="flex items-center gap-2">
 								<Clock className="h-5 w-5" />

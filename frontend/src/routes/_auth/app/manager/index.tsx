@@ -174,14 +174,14 @@ function ManagerDashboardPage() {
 										</div>
 									</div>
 									<Button asChild size="sm">
-										<Link to="/_auth/app/manager/requests">Revisar</Link>
+										<Link to="/app/manager/requests">Revisar</Link>
 									</Button>
 								</div>
 							))}
 						</div>
 						{pendingAbsences.length > 3 && (
 							<Button variant="link" asChild className="mt-2">
-								<Link to="/_auth/app/manager/requests">
+								<Link to="/app/manager/requests">
 									Ver todas las solicitudes ({pendingAbsences.length})
 								</Link>
 							</Button>
@@ -202,7 +202,7 @@ function ManagerDashboardPage() {
 							<CardDescription>Últimos registros de tu equipo</CardDescription>
 						</div>
 						<Button variant="outline" size="sm" asChild>
-							<Link to="/_auth/app/manager/history">
+							<Link to="/app/manager/history">
 								Ver historial completo
 							</Link>
 						</Button>
@@ -372,7 +372,7 @@ function ManagerDashboardPage() {
 			{/* Accesos rápidos */}
 			<div className="grid gap-4 md:grid-cols-2">
 				<Card className="hover:shadow-md transition-shadow cursor-pointer">
-					<Link to="/_auth/app/manager/requests">
+					<Link to="/app/manager/requests">
 						<CardHeader>
 							<CardTitle className="flex items-center gap-2">
 								<FileCheck className="h-5 w-5" />
@@ -384,7 +384,7 @@ function ManagerDashboardPage() {
 				</Card>
 
 				<Card className="hover:shadow-md transition-shadow cursor-pointer">
-					<Link to="/_auth/app/manager/history">
+					<Link to="/app/manager/history">
 						<CardHeader>
 							<CardTitle className="flex items-center gap-2">
 								<Clock className="h-5 w-5" />

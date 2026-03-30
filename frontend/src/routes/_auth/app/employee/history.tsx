@@ -220,7 +220,7 @@ function EmployeeHistoryPage() {
 						Exportar Reporte
 					</Button>
 					<Button asChild className="gap-2">
-						<Link to="/_auth/app/employee/absences/new">
+						<Link to="/app/employee/absences/new">
 							<Plus className="h-4 w-4" />
 							Nueva Solicitud
 						</Link>
@@ -396,7 +396,7 @@ function EmployeeHistoryPage() {
 								No se encontraron solicitudes de ausencia.
 							</p>
 							<Button asChild>
-								<Link to="/_auth/app/employee/absences/new">
+								<Link to="/app/employee/absences/new">
 									<Plus className="h-4 w-4 mr-2" />
 									Crear primera solicitud
 								</Link>
@@ -612,7 +612,7 @@ function EmployeeHistoryPage() {
 							</p>
 						</div>
 						<Button variant="secondary" className="shrink-0 shadow-lg" asChild>
-							<Link to="/_auth/app/profile">Centro de Ayuda</Link>
+							<Link to="/app/profile">Centro de Ayuda</Link>
 						</Button>
 					</div>
 				</CardContent>

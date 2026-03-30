@@ -147,7 +147,7 @@ export function AppSidebar() {
 					<SidebarMenu>
 						<SidebarMenuItem>
 							<SidebarMenuButton asChild tooltip="Mi Perfil">
-								<Link to="/_auth/app/profile">
+								<Link to="/app/profile">
 									<User />
 									<span>Mi Perfil</span>
 								</Link>
@@ -189,7 +189,7 @@ export function AppSidebar() {
 								</div>
 								<DropdownMenuSeparator />
 								<DropdownMenuItem asChild>
-									<Link to="/_auth/app/profile">
+									<Link to="/app/profile">
 										<User className="size-4" />
 										Mi Perfil
 									</Link>

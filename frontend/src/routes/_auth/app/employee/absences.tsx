@@ -65,7 +65,7 @@ function EmployeeAbsencesPage() {
 					</p>
 				</div>
 				<Button asChild className="gap-2">
-					<Link to="/_auth/app/employee/absences/new">
+					<Link to="/app/employee/absences/new">
 						<PlusCircle className="h-5 w-5" />
 						Nueva Solicitud
 					</Link>
@@ -94,7 +94,7 @@ function EmployeeAbsencesPage() {
 								No tienes solicitudes de ausencia registradas.
 							</p>
 							<Button asChild>
-								<Link to="/_auth/app/employee/absences/new">
+								<Link to="/app/employee/absences/new">
 									<PlusCircle className="h-4 w-4 mr-2" />
 									Crear primera solicitud
 								</Link>

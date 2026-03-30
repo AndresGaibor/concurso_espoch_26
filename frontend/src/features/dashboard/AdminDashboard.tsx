@@ -140,7 +140,7 @@ export function AdminDashboard() {
 				icon={LayoutDashboard}
 				actions={
 					<Button asChild size="sm">
-						<Link to="/_auth/app/admin/users">Ver Usuarios</Link>
+						<Link to="/app/admin/users">Ver Usuarios</Link>
 					</Button>
 				}
 			/>
@@ -187,7 +187,7 @@ export function AdminDashboard() {
 								size="sm"
 								className="text-xs text-primary"
 							>
-								<Link to="/_auth/app/admin/attendances">Ver todas →</Link>
+								<Link to="/app/admin/attendances">Ver todas →</Link>
 							</Button>
 						</div>
 					</CardHeader>
@@ -210,7 +210,7 @@ export function AdminDashboard() {
 								size="sm"
 								className="text-xs text-primary"
 							>
-								<Link to="/_auth/app/admin/absences">Ver todas →</Link>
+								<Link to="/app/admin/absences">Ver todas →</Link>
 							</Button>
 						</div>
 					</CardHeader>

@@ -113,7 +113,7 @@ function ManagerHistoryPage() {
 		<div className="space-y-6">
 			<div className="flex items-center gap-4">
 				<Button variant="ghost" size="icon" asChild>
-					<Link to="/_auth/app/manager">
+					<Link to="/app/manager">
 						<ArrowLeft className="h-5 w-5" />
 					</Link>
 				</Button>
@@ -362,7 +362,7 @@ function ManagerHistoryPage() {
 								</CardDescription>
 							</div>
 							<Button variant="outline" size="sm" asChild>
-								<Link to="/_auth/app/manager/requests">Gestionar</Link>
+								<Link to="/app/manager/requests">Gestionar</Link>
 							</Button>
 						</div>
 					</CardHeader>

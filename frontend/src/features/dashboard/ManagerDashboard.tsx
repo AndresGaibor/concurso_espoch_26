@@ -127,7 +127,7 @@ export function ManagerDashboard() {
 				icon={LayoutDashboard}
 				actions={
 					<Button asChild size="sm">
-						<Link to="/_auth/app/manager/requests">Ver Solicitudes</Link>
+						<Link to="/app/manager/requests">Ver Solicitudes</Link>
 					</Button>
 				}
 			/>
@@ -172,7 +172,7 @@ export function ManagerDashboard() {
 								size="sm"
 								className="text-xs text-primary"
 							>
-								<Link to="/_auth/app/manager/history">Historial →</Link>
+								<Link to="/app/manager/history">Historial →</Link>
 							</Button>
 						</div>
 					</CardHeader>
@@ -197,7 +197,7 @@ export function ManagerDashboard() {
 								size="sm"
 								className="text-xs text-primary"
 							>
-								<Link to="/_auth/app/manager/requests">Ver todas →</Link>
+								<Link to="/app/manager/requests">Ver todas →</Link>
 							</Button>
 						</div>
 					</CardHeader>

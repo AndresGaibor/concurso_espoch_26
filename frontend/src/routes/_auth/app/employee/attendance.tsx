@@ -12,7 +12,7 @@ function EmployeeAttendancePage() {
 		<div className="space-y-6">
 			<div className="flex items-center gap-4">
 				<Button variant="ghost" size="icon" asChild>
-					<Link to="/_auth/app/employee">
+					<Link to="/app/employee">
 						<ArrowLeft className="h-5 w-5" />
 					</Link>
 				</Button>
@@ -31,7 +31,7 @@ function EmployeeAttendancePage() {
 					Para registrar tu asistencia, utiliza el panel principal del empleado.
 				</p>
 				<Button asChild>
-					<Link to="/_auth/app/employee">Ir al Panel Principal</Link>
+					<Link to="/app/employee">Ir al Panel Principal</Link>
 				</Button>
 			</div>
 		</div>
