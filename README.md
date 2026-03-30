@@ -1,4 +1,4 @@
-# Concurso ESPOCH 2026
+# Concurso ESPOCH 2026 
 
 Aplicación web desarrollada para el proyecto **Concurso ESPOCH 2026**.
 
