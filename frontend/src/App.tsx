@@ -39,7 +39,7 @@ export function App() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <APITester />
+          <p>Edit <code>src/App.tsx</code> to customize this page</p>
         </CardContent>
       </Card>
     </div>

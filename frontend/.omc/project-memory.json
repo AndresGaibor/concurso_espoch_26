@@ -138,6 +138,97 @@
       ]
     }
   },
-  "hotPaths": [],
+  "hotPaths": [
+    {
+      "path": "src/App.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1774867080061,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ProtectedRoute.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1774867063288,
+      "type": "file"
+    },
+    {
+      "path": "src/routeTree.gen.ts",
+      "accessCount": 2,
+      "lastAccessed": 1774866998258,
+      "type": "file"
+    },
+    {
+      "path": "src/index.ts",
+      "accessCount": 2,
+      "lastAccessed": 1774867095641,
+      "type": "file"
+    },
+    {
+      "path": "src/routes/__root.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774867095695,
+      "type": "file"
+    },
+    {
+      "path": "src/main.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774867147917,
+      "type": "file"
+    },
+    {
+      "path": "index.html",
+      "accessCount": 2,
+      "lastAccessed": 1774867176156,
+      "type": "file"
+    },
+    {
+      "path": "src/routes/_auth.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774866924233,
+      "type": "file"
+    },
+    {
+      "path": "src/routes/login.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774866924657,
+      "type": "file"
+    },
+    {
+      "path": "src/router.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774866924729,
+      "type": "file"
+    },
+    {
+      "path": "src/routes/about.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774866937289,
+      "type": "file"
+    },
+    {
+      "path": "src/routes/_auth/index.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774866937355,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 1,
+      "lastAccessed": 1774866961121,
+      "type": "file"
+    },
+    {
+      "path": "vite.config.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774867005687,
+      "type": "file"
+    },
+    {
+      "path": "src/index.html",
+      "accessCount": 1,
+      "lastAccessed": 1774867160434,
+      "type": "file"
+    }
+  ],
   "userDirectives": []
 }
