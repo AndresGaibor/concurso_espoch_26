@@ -14,6 +14,44 @@ export type Database = {
   }
   public: {
     Tables: {
+      ASISTENCIAS: {
+        Row: {
+          EstadoPuntualidad: string | null
+          FechaHoraIngreso: string | null
+          FechaHoraSalida: string | null
+          IdAsistencia: number
+          IdUbicacion: number | null
+          IdUsuario: number
+          Modalidad: string | null
+        }
+        Insert: {
+          EstadoPuntualidad?: string | null
+          FechaHoraIngreso?: string | null
+          FechaHoraSalida?: string | null
+          IdAsistencia?: number
+          IdUbicacion?: number | null
+          IdUsuario: number
+          Modalidad?: string | null
+        }
+        Update: {
+          EstadoPuntualidad?: string | null
+          FechaHoraIngreso?: string | null
+          FechaHoraSalida?: string | null
+          IdAsistencia?: number
+          IdUbicacion?: number | null
+          IdUsuario?: number
+          Modalidad?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ASISTENCIAS_IdUsuario_fkey"
+            columns: ["IdUsuario"]
+            isOneToOne: false
+            referencedRelation: "USUARIOS"
+            referencedColumns: ["IdUsuario"]
+          },
+        ]
+      }
       blogs: {
         Row: {
           created_at: string | null
@@ -111,6 +149,99 @@ export type Database = {
           username?: string
         }
         Relationships: []
+      }
+      ROLES: {
+        Row: {
+          CreatedAt: string
+          Descripcioon: string | null
+          IdRol: number
+          NombreRol: string
+        }
+        Insert: {
+          CreatedAt?: string
+          Descripcioon?: string | null
+          IdRol?: number
+          NombreRol?: string
+        }
+        Update: {
+          CreatedAt?: string
+          Descripcioon?: string | null
+          IdRol?: number
+          NombreRol?: string
+        }
+        Relationships: []
+      }
+      UBICACIONES: {
+        Row: {
+          CodigoUbicacion: number
+          created_at: string
+          Direccion: string | null
+          Latitud: number | null
+          Longitud: number | null
+        }
+        Insert: {
+          CodigoUbicacion?: number
+          created_at?: string
+          Direccion?: string | null
+          Latitud?: number | null
+          Longitud?: number | null
+        }
+        Update: {
+          CodigoUbicacion?: number
+          created_at?: string
+          Direccion?: string | null
+          Latitud?: number | null
+          Longitud?: number | null
+        }
+        Relationships: []
+      }
+      USUARIOS: {
+        Row: {
+          CorreoInstitucional: string | null
+          CreatedAt: string
+          Estado: string | null
+          IdJefeDirecto: number | null
+          IdRol: number
+          IdUsuario: number
+          NombreCompleto: string
+          SupabaseUserId: string | null
+        }
+        Insert: {
+          CorreoInstitucional?: string | null
+          CreatedAt?: string
+          Estado?: string | null
+          IdJefeDirecto?: number | null
+          IdRol: number
+          IdUsuario?: number
+          NombreCompleto: string
+          SupabaseUserId?: string | null
+        }
+        Update: {
+          CorreoInstitucional?: string | null
+          CreatedAt?: string
+          Estado?: string | null
+          IdJefeDirecto?: number | null
+          IdRol?: number
+          IdUsuario?: number
+          NombreCompleto?: string
+          SupabaseUserId?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "USUARIOS_IdJefeDirecto_fkey"
+            columns: ["IdJefeDirecto"]
+            isOneToOne: false
+            referencedRelation: "USUARIOS"
+            referencedColumns: ["IdUsuario"]
+          },
+          {
+            foreignKeyName: "USUARIOS_IdRol_fkey"
+            columns: ["IdRol"]
+            isOneToOne: false
+            referencedRelation: "ROLES"
+            referencedColumns: ["IdRol"]
+          },
+        ]
       }
     }
     Views: {
