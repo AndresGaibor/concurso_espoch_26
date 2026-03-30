@@ -41,6 +41,8 @@ export interface AuthError {
 
 // Constantes de roles (valores esperados en la BD)
 export const ROL_NOMBRE_ADMIN = "ADMIN" as const;
+export const ROL_NOMBRE_MANAGER = "MANAGER" as const;
+export const ROL_NOMBRE_EMPLOYEE = "EMPLOYEE" as const;
 export const ROL_NOMBRE_USUARIO = "USUARIO" as const;
 
 // Proveedores de OAuth soportados

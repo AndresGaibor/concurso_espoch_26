@@ -16,35 +16,101 @@ export type Database = {
     Tables: {
       ASISTENCIAS: {
         Row: {
+          Direccion: string | null
           EstadoPuntualidad: string | null
-          FechaHoraIngreso: string | null
-          FechaHoraSalida: string | null
+          FechaHora: string | null
           IdAsistencia: number
-          IdUbicacion: number | null
           IdUsuario: number
+          Latitud: number | null
+          Longitud: number | null
           Modalidad: string | null
+          Tipo: string | null
         }
         Insert: {
+          Direccion?: string | null
           EstadoPuntualidad?: string | null
-          FechaHoraIngreso?: string | null
-          FechaHoraSalida?: string | null
+          FechaHora?: string | null
           IdAsistencia?: number
-          IdUbicacion?: number | null
           IdUsuario: number
+          Latitud?: number | null
+          Longitud?: number | null
           Modalidad?: string | null
+          Tipo?: string | null
         }
         Update: {
+          Direccion?: string | null
           EstadoPuntualidad?: string | null
-          FechaHoraIngreso?: string | null
-          FechaHoraSalida?: string | null
+          FechaHora?: string | null
           IdAsistencia?: number
-          IdUbicacion?: number | null
           IdUsuario?: number
+          Latitud?: number | null
+          Longitud?: number | null
           Modalidad?: string | null
+          Tipo?: string | null
         }
         Relationships: [
           {
             foreignKeyName: "ASISTENCIAS_IdUsuario_fkey"
+            columns: ["IdUsuario"]
+            isOneToOne: false
+            referencedRelation: "USUARIOS"
+            referencedColumns: ["IdUsuario"]
+          },
+        ]
+      }
+      AUSENCIAS: {
+        Row: {
+          EstadoAprobacion: string | null
+          FechaAusencia: string | null
+          FechaSolicitud: string | null
+          HoraFin: string | null
+          HoraInicio: string | null
+          IdAprobador: number | null
+          IdAusencia: number
+          IdUsuario: number | null
+          Motivo: string | null
+          MotivoRechazo: string | null
+          TipoAusencia: string | null
+          TotalHoras: number | null
+        }
+        Insert: {
+          EstadoAprobacion?: string | null
+          FechaAusencia?: string | null
+          FechaSolicitud?: string | null
+          HoraFin?: string | null
+          HoraInicio?: string | null
+          IdAprobador?: number | null
+          IdAusencia?: number
+          IdUsuario?: number | null
+          Motivo?: string | null
+          MotivoRechazo?: string | null
+          TipoAusencia?: string | null
+          TotalHoras?: number | null
+        }
+        Update: {
+          EstadoAprobacion?: string | null
+          FechaAusencia?: string | null
+          FechaSolicitud?: string | null
+          HoraFin?: string | null
+          HoraInicio?: string | null
+          IdAprobador?: number | null
+          IdAusencia?: number
+          IdUsuario?: number | null
+          Motivo?: string | null
+          MotivoRechazo?: string | null
+          TipoAusencia?: string | null
+          TotalHoras?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "AUSENCIAS_IdAprobador_fkey"
+            columns: ["IdAprobador"]
+            isOneToOne: false
+            referencedRelation: "USUARIOS"
+            referencedColumns: ["IdUsuario"]
+          },
+          {
+            foreignKeyName: "AUSENCIAS_IdUsuario_fkey"
             columns: ["IdUsuario"]
             isOneToOne: false
             referencedRelation: "USUARIOS"
@@ -83,6 +149,30 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      HORARIOS: {
+        Row: {
+          Estado: string | null
+          HoraFin: string | null
+          HoraInicio: string | null
+          IdHorario: number
+          NombreHorario: string | null
+        }
+        Insert: {
+          Estado?: string | null
+          HoraFin?: string | null
+          HoraInicio?: string | null
+          IdHorario?: number
+          NombreHorario?: string | null
+        }
+        Update: {
+          Estado?: string | null
+          HoraFin?: string | null
+          HoraInicio?: string | null
+          IdHorario?: number
+          NombreHorario?: string | null
+        }
+        Relationships: []
       }
       posts: {
         Row: {
@@ -153,45 +243,21 @@ export type Database = {
       ROLES: {
         Row: {
           CreatedAt: string
-          Descripcioon: string | null
+          Descripcion: string | null
           IdRol: number
           NombreRol: string
         }
         Insert: {
           CreatedAt?: string
-          Descripcioon?: string | null
+          Descripcion?: string | null
           IdRol?: number
           NombreRol?: string
         }
         Update: {
           CreatedAt?: string
-          Descripcioon?: string | null
+          Descripcion?: string | null
           IdRol?: number
           NombreRol?: string
-        }
-        Relationships: []
-      }
-      UBICACIONES: {
-        Row: {
-          CodigoUbicacion: number
-          created_at: string
-          Direccion: string | null
-          Latitud: number | null
-          Longitud: number | null
-        }
-        Insert: {
-          CodigoUbicacion?: number
-          created_at?: string
-          Direccion?: string | null
-          Latitud?: number | null
-          Longitud?: number | null
-        }
-        Update: {
-          CodigoUbicacion?: number
-          created_at?: string
-          Direccion?: string | null
-          Latitud?: number | null
-          Longitud?: number | null
         }
         Relationships: []
       }
@@ -200,6 +266,7 @@ export type Database = {
           CorreoInstitucional: string | null
           CreatedAt: string
           Estado: string | null
+          IdHorario: number | null
           IdJefeDirecto: number | null
           IdRol: number
           IdUsuario: number
@@ -210,6 +277,7 @@ export type Database = {
           CorreoInstitucional?: string | null
           CreatedAt?: string
           Estado?: string | null
+          IdHorario?: number | null
           IdJefeDirecto?: number | null
           IdRol: number
           IdUsuario?: number
@@ -220,6 +288,7 @@ export type Database = {
           CorreoInstitucional?: string | null
           CreatedAt?: string
           Estado?: string | null
+          IdHorario?: number | null
           IdJefeDirecto?: number | null
           IdRol?: number
           IdUsuario?: number
@@ -227,6 +296,13 @@ export type Database = {
           SupabaseUserId?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "USUARIOS_IdHorario_fkey"
+            columns: ["IdHorario"]
+            isOneToOne: false
+            referencedRelation: "HORARIOS"
+            referencedColumns: ["IdHorario"]
+          },
           {
             foreignKeyName: "USUARIOS_IdJefeDirecto_fkey"
             columns: ["IdJefeDirecto"]
