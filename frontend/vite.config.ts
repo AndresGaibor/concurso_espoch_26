@@ -13,6 +13,10 @@ const config = defineConfig({
 		tanstackRouter({ target: "react", autoCodeSplitting: true }),
 		viteReact(),
 	],
+	server: {
+		port: 3000,
+		strictPort: true, // Usa el puerto 3000 o falla si está ocupado
+	},
 });
 
 export default config;
