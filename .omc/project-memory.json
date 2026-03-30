@@ -1,0 +1,75 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1774847845762,
+  "projectRoot": "/Users/andresgaibor/code/javascript/concurso",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "backend": {
+      "path": "backend",
+      "purpose": null,
+      "fileCount": 7,
+      "lastAccessed": 1774847845143,
+      "keyFiles": [
+        "CLAUDE.md",
+        "README.md",
+        "bun.lock",
+        "index.ts",
+        "package.json"
+      ]
+    },
+    "frontend": {
+      "path": "frontend",
+      "purpose": null,
+      "fileCount": 10,
+      "lastAccessed": 1774847845157,
+      "keyFiles": [
+        "CLAUDE.md",
+        "README.md",
+        "build.ts",
+        "bun-env.d.ts",
+        "bun.lock"
+      ]
+    },
+    "backend/node_modules": {
+      "path": "backend/node_modules",
+      "purpose": "Dependencies",
+      "fileCount": 0,
+      "lastAccessed": 1774847845193,
+      "keyFiles": []
+    },
+    "frontend/node_modules": {
+      "path": "frontend/node_modules",
+      "purpose": "Dependencies",
+      "fileCount": 0,
+      "lastAccessed": 1774847845308,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [],
+  "userDirectives": []
+}
