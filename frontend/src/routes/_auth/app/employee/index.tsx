@@ -1,13 +1,26 @@
 // Dashboard principal del empleado con registro de asistencia
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect, useCallback } from "react";
-import { useAuth } from "#/features/auth";
-import { useAttendance } from "#/features/attendance/hooks/useAttendance";
-import { Clock, MapPin, CheckCircle, LogOut, AlertCircle, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
+import {
+	AlertCircle,
+	Calendar,
+	CheckCircle,
+	Clock,
+	LogOut,
+	MapPin,
+} from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { useAttendance } from "#/features/attendance/hooks/useAttendance";
+import { useAuth } from "#/features/auth";
+import { Button } from "@/components/ui/button";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 
 export const Route = createFileRoute("/_auth/app/employee/")({
 	component: EmployeeDashboardPage,
@@ -15,49 +28,62 @@ export const Route = createFileRoute("/_auth/app/employee/")({
 
 function EmployeeDashboardPage() {
 	const { usuarioApp } = useAuth();
-	const { registerAttendance, getLastAttendance, getUserAttendances, isLoading } = useAttendance();
+	const {
+		registerAttendance,
+		getLastAttendance,
+		getUserAttendances,
+		isLoading,
+	} = useAttendance();
 	const [lastAttendance, setLastAttendance] = useState<any>(null);
 	const [todayAttendances, setTodayAttendances] = useState<any[]>([]);
 	const [isRegistering, setIsRegistering] = useState(false);
-	const [location, setLocation] = useState<{ lat: number; lng: number; address: string } | null>(null);
+	const [location, setLocation] = useState<{
+		lat: number;
+		lng: number;
+		address: string;
+	} | null>(null);
 	const [locationError, setLocationError] = useState<string | null>(null);
 
 	// Obtener ubicación actual
 	const getCurrentLocation = useCallback(() => {
-		return new Promise<{ lat: number; lng: number; address: string }>((resolve, reject) => {
-			if (!navigator.geolocation) {
-				reject(new Error("La geolocalización no es soportada por este navegador"));
-				return;
-			}
-
-			navigator.geolocation.getCurrentPosition(
-				async (position) => {
-					const { latitude, longitude } = position.coords;
-					// Intentar obtener dirección inversa (opcional)
-					let address = `Lat: ${latitude.toFixed(6)}, Lon: ${longitude.toFixed(6)}`;
-					try {
-						const response = await fetch(
-							`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
-						);
-						const data = await response.json();
-						if (data.display_name) {
-							address = data.display_name;
-						}
-					} catch {
-						// Si falla la geocodificación inversa, usar coordenadas
-					}
-					resolve({ lat: latitude, lng: longitude, address });
-				},
-				(error) => {
-					reject(new Error(error.message));
-				},
-				{
-					enableHighAccuracy: true,
-					timeout: 10000,
-					maximumAge: 0,
+		return new Promise<{ lat: number; lng: number; address: string }>(
+			(resolve, reject) => {
+				if (!navigator.geolocation) {
+					reject(
+						new Error("La geolocalización no es soportada por este navegador"),
+					);
+					return;
 				}
-			);
-		});
+
+				navigator.geolocation.getCurrentPosition(
+					async (position) => {
+						const { latitude, longitude } = position.coords;
+						// Intentar obtener dirección inversa (opcional)
+						let address = `Lat: ${latitude.toFixed(6)}, Lon: ${longitude.toFixed(6)}`;
+						try {
+							const response = await fetch(
+								`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
+							);
+							const data = await response.json();
+							if (data.display_name) {
+								address = data.display_name;
+							}
+						} catch {
+							// Si falla la geocodificación inversa, usar coordenadas
+						}
+						resolve({ lat: latitude, lng: longitude, address });
+					},
+					(error) => {
+						reject(new Error(error.message));
+					},
+					{
+						enableHighAccuracy: true,
+						timeout: 10000,
+						maximumAge: 0,
+					},
+				);
+			},
+		);
 	}, []);
 
 	// Cargar última asistencia y asistencias de hoy
@@ -119,7 +145,9 @@ function EmployeeDashboardPage() {
 				setTodayAttendances(todayData);
 			}
 		} catch (err) {
-			setLocationError(err instanceof Error ? err.message : "Error al obtener ubicación");
+			setLocationError(
+				err instanceof Error ? err.message : "Error al obtener ubicación",
+			);
 		} finally {
 			setIsRegistering(false);
 		}
@@ -136,7 +164,9 @@ function EmployeeDashboardPage() {
 		<div className="space-y-6">
 			<div className="flex items-center justify-between">
 				<div>
-					<h1 className="text-3xl font-bold tracking-tight">Panel del Colaborador</h1>
+					<h1 className="text-3xl font-bold tracking-tight">
+						Panel del Colaborador
+					</h1>
 					<p className="text-muted-foreground">
 						Gestiona tus asistencias y solicitudes de ausencia
 					</p>
@@ -214,7 +244,9 @@ function EmployeeDashboardPage() {
 				</CardHeader>
 				<CardContent>
 					{todayAttendances.length === 0 ? (
-						<p className="text-muted-foreground text-sm">No hay registros de asistencia hoy.</p>
+						<p className="text-muted-foreground text-sm">
+							No hay registros de asistencia hoy.
+						</p>
 					) : (
 						<div className="space-y-2">
 							{todayAttendances.map((asistencia, idx) => (
@@ -241,7 +273,9 @@ function EmployeeDashboardPage() {
 									</div>
 									<div className="text-right text-sm text-muted-foreground">
 										{asistencia.Modalidad && (
-											<p className="capitalize">{asistencia.Modalidad.toLowerCase()}</p>
+											<p className="capitalize">
+												{asistencia.Modalidad.toLowerCase()}
+											</p>
 										)}
 										{asistencia.EstadoPuntualidad && (
 											<p
@@ -251,7 +285,10 @@ function EmployeeDashboardPage() {
 														: "text-orange-600"
 												}
 											>
-												{asistencia.EstadoPuntualidad.toLowerCase().replace("_", " ")}
+												{asistencia.EstadoPuntualidad.toLowerCase().replace(
+													"_",
+													" ",
+												)}
 											</p>
 										)}
 									</div>
@@ -267,7 +304,9 @@ function EmployeeDashboardPage() {
 				<Card>
 					<CardHeader>
 						<CardTitle>Último Registro</CardTitle>
-						<CardDescription>Información de tu última asistencia registrada</CardDescription>
+						<CardDescription>
+							Información de tu última asistencia registrada
+						</CardDescription>
 					</CardHeader>
 					<CardContent>
 						<div className="grid grid-cols-2 gap-4 text-sm">
@@ -281,7 +320,11 @@ function EmployeeDashboardPage() {
 								<p className="text-muted-foreground">Fecha y Hora</p>
 								<p className="font-medium">
 									{lastAttendance.FechaHora
-										? format(new Date(lastAttendance.FechaHora), "PPP HH:mm:ss", { locale: es })
+										? format(
+												new Date(lastAttendance.FechaHora),
+												"PPP HH:mm:ss",
+												{ locale: es },
+											)
 										: "N/A"}
 								</p>
 							</div>
@@ -303,7 +346,10 @@ function EmployeeDashboardPage() {
 												: "text-orange-600"
 										}`}
 									>
-										{lastAttendance.EstadoPuntualidad.toLowerCase().replace("_", " ")}
+										{lastAttendance.EstadoPuntualidad.toLowerCase().replace(
+											"_",
+											" ",
+										)}
 									</p>
 								</div>
 							)}
@@ -321,7 +367,9 @@ function EmployeeDashboardPage() {
 								<Clock className="h-5 w-5" />
 								Mis Asistencias
 							</CardTitle>
-							<CardDescription>Ver historial completo de asistencias</CardDescription>
+							<CardDescription>
+								Ver historial completo de asistencias
+							</CardDescription>
 						</CardHeader>
 					</Link>
 				</Card>
@@ -345,7 +393,9 @@ function EmployeeDashboardPage() {
 								<AlertCircle className="h-5 w-5" />
 								Justificar Ausencia
 							</CardTitle>
-							<CardDescription>Solicitar justificación de inasistencia</CardDescription>
+							<CardDescription>
+								Solicitar justificación de inasistencia
+							</CardDescription>
 						</CardHeader>
 					</Link>
 				</Card>

@@ -1,10 +1,16 @@
 // Componente: LoginForm — Formulario de login con email/password y Microsoft OAuth
 import { useState } from "react";
+import { useAuth } from "#/features/auth/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useAuth } from "#/features/auth/hooks/useAuth";
 
 export function LoginForm() {
 	const { signInWithPassword, signInWithMicrosoft } = useAuth();
@@ -64,9 +70,7 @@ export function LoginForm() {
 							disabled={isLoading}
 						/>
 					</div>
-					{error && (
-						<p className="text-sm text-destructive">{error}</p>
-					)}
+					{error && <p className="text-sm text-destructive">{error}</p>}
 					<Button type="submit" disabled={isLoading}>
 						{isLoading ? "Iniciando sesión..." : "Entrar"}
 					</Button>
@@ -99,7 +103,11 @@ export function LoginForm() {
 
 function MicrosoftIcon({ className }: { className?: string }) {
 	return (
-		<svg className={className} viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
+		<svg
+			className={className}
+			viewBox="0 0 21 21"
+			xmlns="http://www.w3.org/2000/svg"
+		>
 			<rect x="1" y="1" width="9" height="9" fill="#f25022" />
 			<rect x="11" y="1" width="9" height="9" fill="#00a4ef" />
 			<rect x="1" y="11" width="9" height="9" fill="#7fba00" />

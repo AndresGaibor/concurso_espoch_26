@@ -1,22 +1,26 @@
 // Exportadores principales para el módulo de asistencias y ausencias
-export { useAttendance, useAbsence, useManagerEmployees } from "./hooks/useAttendance";
+export {
+	useAbsence,
+	useAttendance,
+	useManagerEmployees,
+} from "./hooks/useAttendance";
 export type {
-	AsistenciaRow,
 	AsistenciaInsert,
+	AsistenciaRow,
 	AsistenciaUpdate,
-	AusenciaRow,
-	AusenciaInsert,
-	AusenciaUpdate,
 	AsistenciaWithUser,
-	AusenciaWithUser,
 	AusenciaFormData,
+	AusenciaInsert,
+	AusenciaRow,
+	AusenciaUpdate,
+	AusenciaWithUser,
 	EstadoAprobacion,
-	TipoAusencia,
-	TipoAsistencia,
 	EstadoPuntualidad,
+	TipoAsistencia,
+	TipoAusencia,
 } from "./types/attendance.types";
 export {
-	TIPOS_AUSENCIA,
-	TIPOS_ASISTENCIA,
 	ESTADOS_PUNTUALIDAD,
+	TIPOS_ASISTENCIA,
+	TIPOS_AUSENCIA,
 } from "./types/attendance.types";

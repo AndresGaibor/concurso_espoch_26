@@ -7,55 +7,55 @@ type HorarioInsert = Database["public"]["Tables"]["HORARIOS"]["Insert"];
 type HorarioUpdate = Database["public"]["Tables"]["HORARIOS"]["Update"];
 
 export function useHorarios() {
-  const [horarios, setHorarios] = useState<HorarioRow[]>([]);
-  const [loading, setLoading] = useState(true);
+	const [horarios, setHorarios] = useState<HorarioRow[]>([]);
+	const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetch() {
-      const { data, error } = await supabase.from("HORARIOS").select("*");
-      if (error) throw error;
-      setHorarios(data ?? []);
-      setLoading(false);
-    }
-    fetch();
-  }, []);
+	useEffect(() => {
+		async function fetch() {
+			const { data, error } = await supabase.from("HORARIOS").select("*");
+			if (error) throw error;
+			setHorarios(data ?? []);
+			setLoading(false);
+		}
+		fetch();
+	}, []);
 
-  return { horarios, loading };
+	return { horarios, loading };
 }
 
 export function useCreateHorario() {
-  const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(false);
 
-  async function createHorario(data: Omit<HorarioInsert, "IdHorario">) {
-    setLoading(true);
-    const { error } = await supabase.from("HORARIOS").insert(data);
-    setLoading(false);
-    if (error) throw error;
-  }
+	async function createHorario(data: Omit<HorarioInsert, "IdHorario">) {
+		setLoading(true);
+		const { error } = await supabase.from("HORARIOS").insert(data);
+		setLoading(false);
+		if (error) throw error;
+	}
 
-  return { createHorario, loading };
+	return { createHorario, loading };
 }
 
 export function useUpdateHorario() {
-  async function updateHorario(id: number, data: HorarioUpdate) {
-    const { error } = await supabase
-      .from("HORARIOS")
-      .update(data)
-      .eq("IdHorario", id);
-    if (error) throw error;
-  }
+	async function updateHorario(id: number, data: HorarioUpdate) {
+		const { error } = await supabase
+			.from("HORARIOS")
+			.update(data)
+			.eq("IdHorario", id);
+		if (error) throw error;
+	}
 
-  return { updateHorario };
+	return { updateHorario };
 }
 
 export function useDeleteHorario() {
-  async function deleteHorario(id: number) {
-    const { error } = await supabase
-      .from("HORARIOS")
-      .delete()
-      .eq("IdHorario", id);
-    if (error) throw error;
-  }
+	async function deleteHorario(id: number) {
+		const { error } = await supabase
+			.from("HORARIOS")
+			.delete()
+			.eq("IdHorario", id);
+		if (error) throw error;
+	}
 
-  return { deleteHorario };
+	return { deleteHorario };
 }

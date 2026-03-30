@@ -9,7 +9,9 @@ export const Route = createFileRoute("/auth/callback")({
 });
 
 export function AuthCallback() {
-	const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
+	const [status, setStatus] = useState<"loading" | "success" | "error">(
+		"loading",
+	);
 
 	useEffect(() => {
 		// Verificar sesión después de que Supabase procese el hash
@@ -64,7 +66,9 @@ export function AuthCallback() {
 			{status === "error" && (
 				<div className="text-center">
 					<p className="text-destructive font-medium">Error de autenticación</p>
-					<p className="text-muted-foreground text-sm">Redirigiendo al login...</p>
+					<p className="text-muted-foreground text-sm">
+						Redirigiendo al login...
+					</p>
 				</div>
 			)}
 		</div>

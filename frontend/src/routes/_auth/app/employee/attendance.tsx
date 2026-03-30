@@ -17,7 +17,9 @@ function EmployeeAttendancePage() {
 					</Link>
 				</Button>
 				<div>
-					<h1 className="text-3xl font-bold tracking-tight">Registrar Asistencia</h1>
+					<h1 className="text-3xl font-bold tracking-tight">
+						Registrar Asistencia
+					</h1>
 					<p className="text-muted-foreground">
 						Registra tu entrada y salida diaria
 					</p>

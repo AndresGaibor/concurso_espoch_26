@@ -3,13 +3,17 @@ import type { Database } from "#/types/database";
 
 // Tipos base de ASISTENCIAS
 export type AsistenciaRow = Database["public"]["Tables"]["ASISTENCIAS"]["Row"];
-export type AsistenciaInsert = Database["public"]["Tables"]["ASISTENCIAS"]["Insert"];
-export type AsistenciaUpdate = Database["public"]["Tables"]["ASISTENCIAS"]["Update"];
+export type AsistenciaInsert =
+	Database["public"]["Tables"]["ASISTENCIAS"]["Insert"];
+export type AsistenciaUpdate =
+	Database["public"]["Tables"]["ASISTENCIAS"]["Update"];
 
 // Tipos base de AUSENCIAS
 export type AusenciaRow = Database["public"]["Tables"]["AUSENCIAS"]["Row"];
-export type AusenciaInsert = Database["public"]["Tables"]["AUSENCIAS"]["Insert"];
-export type AusenciaUpdate = Database["public"]["Tables"]["AUSENCIAS"]["Update"];
+export type AusenciaInsert =
+	Database["public"]["Tables"]["AUSENCIAS"]["Insert"];
+export type AusenciaUpdate =
+	Database["public"]["Tables"]["AUSENCIAS"]["Update"];
 
 // Tipos con relaciones para vistas enriquecidas
 export type AsistenciaWithUser = AsistenciaRow & {
@@ -59,7 +63,8 @@ export const TIPOS_ASISTENCIA = {
 	SALIDA: "SALIDA",
 } as const;
 
-export type TipoAsistencia = (typeof TIPOS_ASISTENCIA)[keyof typeof TIPOS_ASISTENCIA];
+export type TipoAsistencia =
+	(typeof TIPOS_ASISTENCIA)[keyof typeof TIPOS_ASISTENCIA];
 
 // Estados de puntualidad
 export const ESTADOS_PUNTUALIDAD = {

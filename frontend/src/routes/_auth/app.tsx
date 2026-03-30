@@ -3,9 +3,9 @@ import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { AppLayout } from "#/components/layout/AppLayout";
 
 export const Route = createFileRoute("/_auth/app")({
-  component: AppLayoutRoute,
+	component: AppLayoutRoute,
 });
 
 function AppLayoutRoute() {
-  return <AppLayout />;
+	return <AppLayout />;
 }

@@ -1,3 +1,22 @@
+import {
+	Ban,
+	CheckCircle,
+	Edit,
+	MoreHorizontal,
+	Plus,
+	Search,
+	ShieldUser,
+	TrendingUp,
+	Upload,
+	Users,
+} from "lucide-react";
+import { useState } from "react";
+import {
+	Avatar,
+	AvatarFallback,
+	AvatarGroup,
+	AvatarGroupCount,
+} from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,26 +42,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import {
-	Avatar,
-	AvatarFallback,
-	AvatarGroup,
-	AvatarGroupCount,
-} from "@/components/ui/avatar";
-import {
-	Ban,
-	CheckCircle,
-	Edit,
-	MoreHorizontal,
-	Plus,
-	Search,
-	ShieldUser,
-	TrendingUp,
-	Upload,
-	Users,
-} from "lucide-react";
-import { useState } from "react";
-import { useUsuarios, type UsuarioEnriched } from "../hooks/useUsuarios";
+import { type UsuarioEnriched, useUsuarios } from "../hooks/useUsuarios";
 
 type StatusFilter = "all" | "active" | "inactive";
 type RoleFilter = "all" | string;
@@ -97,7 +97,9 @@ function UserTableRow({
 	onAssignManager?: () => void;
 	onToggleStatus?: () => void;
 }) {
-	const initials = getInitials(usuario.NombreCompleto ?? usuario.CorreoInstitucional ?? "U");
+	const initials = getInitials(
+		usuario.NombreCompleto ?? usuario.CorreoInstitucional ?? "U",
+	);
 	const jefeDirecto = usuario.JefeDirecto?.[0];
 
 	return (
@@ -110,7 +112,8 @@ function UserTableRow({
 						</AvatarFallback>
 					</Avatar>
 					<span className="font-semibold text-primary">
-						{usuario.NombreCompleto ?? usuario.CorreoInstitucional?.split("@")[0]}
+						{usuario.NombreCompleto ??
+							usuario.CorreoInstitucional?.split("@")[0]}
 					</span>
 				</div>
 			</TableCell>
@@ -118,7 +121,9 @@ function UserTableRow({
 				{usuario.CorreoInstitucional}
 			</TableCell>
 			<TableCell>
-				<Badge variant="secondary">{usuario.ROLES?.NombreRol ?? "Sin rol"}</Badge>
+				<Badge variant="secondary">
+					{usuario.ROLES?.NombreRol ?? "Sin rol"}
+				</Badge>
 			</TableCell>
 			<TableCell className="text-sm text-muted-foreground">
 				{jefeDirecto?.NombreCompleto ?? "Sin asignar"}
@@ -192,14 +197,16 @@ export function UsersManagement() {
 
 	const activeCount = usuarios.filter((u) => isActiveUser(u.Estado)).length;
 	const pendingCount = usuarios.filter((u) => !isActiveUser(u.Estado)).length;
-	const uniqueRoles = [...new Set(usuarios.map((u) => u.ROLES?.NombreRol))].filter(
-		Boolean,
-	);
+	const uniqueRoles = [
+		...new Set(usuarios.map((u) => u.ROLES?.NombreRol)),
+	].filter(Boolean);
 
 	if (error) {
 		return (
 			<div className="flex items-center justify-center p-8">
-				<p className="text-destructive">Error al cargar usuarios: {error.message}</p>
+				<p className="text-destructive">
+					Error al cargar usuarios: {error.message}
+				</p>
 			</div>
 		);
 	}
@@ -330,10 +337,7 @@ export function UsersManagement() {
 							</TableRow>
 						) : (
 							filteredUsers.map((user) => (
-								<UserTableRow
-									key={user.SupabaseUserId}
-									usuario={user}
-								/>
+								<UserTableRow key={user.SupabaseUserId} usuario={user} />
 							))
 						)}
 					</TableBody>
@@ -382,14 +386,14 @@ export function UsersManagement() {
 								.map((user) => (
 									<Avatar key={user.SupabaseUserId} size="sm">
 										<AvatarFallback className="bg-muted text-xs">
-											{getInitials(user.NombreCompleto ?? user.CorreoInstitucional ?? "U")}
+											{getInitials(
+												user.NombreCompleto ?? user.CorreoInstitucional ?? "U",
+											)}
 										</AvatarFallback>
 									</Avatar>
 								))}
 							{pendingCount > 3 && (
-								<AvatarGroupCount>
-									+{pendingCount - 3}
-								</AvatarGroupCount>
+								<AvatarGroupCount>+{pendingCount - 3}</AvatarGroupCount>
 							)}
 						</AvatarGroup>
 					</div>

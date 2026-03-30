@@ -1,15 +1,32 @@
 // Dashboard del Manager/Jefe Directo
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
-import { useAuth } from "#/features/auth";
-import { useManagerEmployees, useAbsence } from "#/features/attendance/hooks/useAttendance";
-import { Users, FileCheck, Clock, Calendar, AlertCircle, CheckCircle, XCircle } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
-import { StatusBadge } from "@/components/custom/StatusBadge";
+import {
+	AlertCircle,
+	Calendar,
+	CheckCircle,
+	Clock,
+	FileCheck,
+	Users,
+	XCircle,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+	useAbsence,
+	useManagerEmployees,
+} from "#/features/attendance/hooks/useAttendance";
+import { useAuth } from "#/features/auth";
 import { StatCard } from "@/components/custom/StatCard";
+import { StatusBadge } from "@/components/custom/StatusBadge";
+import { Button } from "@/components/ui/button";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 
 export const Route = createFileRoute("/_auth/app/manager/")({
 	component: ManagerDashboardPage,
@@ -17,9 +34,13 @@ export const Route = createFileRoute("/_auth/app/manager/")({
 
 function ManagerDashboardPage() {
 	const { usuarioApp } = useAuth();
-	const { getManagerEmployees, getEmployeesAttendances, isLoading: employeesLoading } = useManagerEmployees();
+	const {
+		getManagerEmployees,
+		getEmployeesAttendances,
+		isLoading: employeesLoading,
+	} = useManagerEmployees();
 	const { getPendingAbsencesForManager } = useAbsence();
-	
+
 	const [employees, setEmployees] = useState<any[]>([]);
 	const [attendances, setAttendances] = useState<any[]>([]);
 	const [pendingAbsences, setPendingAbsences] = useState<any[]>([]);
@@ -42,14 +63,21 @@ function ManagerDashboardPage() {
 		};
 
 		loadData();
-	}, [usuarioApp, getManagerEmployees, getEmployeesAttendances, getPendingAbsencesForManager]);
+	}, [
+		usuarioApp,
+		getManagerEmployees,
+		getEmployeesAttendances,
+		getPendingAbsencesForManager,
+	]);
 
 	// Estadísticas
 	const totalEmployees = employees.length;
 	const today = new Date().toDateString();
 	const todayAttendances = attendances.filter((a) => {
 		if (!a.FechaHora) return false;
-		return new Date(a.FechaHora).toDateString() === today && a.Tipo === "ENTRADA";
+		return (
+			new Date(a.FechaHora).toDateString() === today && a.Tipo === "ENTRADA"
+		);
 	});
 	const presentToday = new Set(todayAttendances.map((a) => a.IdUsuario)).size;
 	const pendingAbsencesCount = pendingAbsences.length;
@@ -58,7 +86,9 @@ function ManagerDashboardPage() {
 		<div className="space-y-6">
 			<div className="flex items-center justify-between">
 				<div>
-					<h1 className="text-3xl font-bold tracking-tight">Panel del Jefe Directo</h1>
+					<h1 className="text-3xl font-bold tracking-tight">
+						Panel del Jefe Directo
+					</h1>
 					<p className="text-muted-foreground">
 						Gestiona tu equipo y revisa las asistencias
 					</p>
@@ -78,14 +108,20 @@ function ManagerDashboardPage() {
 					value={`${presentToday}/${totalEmployees}`}
 					icon={CheckCircle}
 					description="Empleados que marcaron entrada"
-					valueClass={presentToday === totalEmployees ? "text-green-600" : "text-orange-600"}
+					valueClass={
+						presentToday === totalEmployees
+							? "text-green-600"
+							: "text-orange-600"
+					}
 				/>
 				<StatCard
 					title="Solicitudes Pendientes"
 					value={pendingAbsencesCount}
 					icon={AlertCircle}
 					description="Esperan tu aprobación"
-					valueClass={pendingAbsencesCount > 0 ? "text-destructive" : "text-green-600"}
+					valueClass={
+						pendingAbsencesCount > 0 ? "text-destructive" : "text-green-600"
+					}
 				/>
 				<StatCard
 					title="Asistencias (Total)"
@@ -104,13 +140,18 @@ function ManagerDashboardPage() {
 							Solicitudes Pendientes de Aprobación
 						</CardTitle>
 						<CardDescription>
-							Tienes {pendingAbsencesCount} {pendingAbsencesCount === 1 ? "solicitud" : "solicitudes"} esperando revisión
+							Tienes {pendingAbsencesCount}{" "}
+							{pendingAbsencesCount === 1 ? "solicitud" : "solicitudes"}{" "}
+							esperando revisión
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
 						<div className="space-y-3">
 							{pendingAbsences.slice(0, 3).map((ausencia) => (
-								<div key={ausencia.IdAusencia} className="flex items-center justify-between p-3 bg-muted rounded-md">
+								<div
+									key={ausencia.IdAusencia}
+									className="flex items-center justify-between p-3 bg-muted rounded-md"
+								>
 									<div className="flex items-center gap-3">
 										<div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
 											<span className="text-sm font-semibold text-primary">
@@ -118,11 +159,16 @@ function ManagerDashboardPage() {
 											</span>
 										</div>
 										<div>
-											<p className="font-medium">{ausencia.USUARIOS?.NombreCompleto || "Empleado"}</p>
+											<p className="font-medium">
+												{ausencia.USUARIOS?.NombreCompleto || "Empleado"}
+											</p>
 											<p className="text-sm text-muted-foreground">
-												{ausencia.TipoAusencia?.toLowerCase().replace("_", " ")} -{" "}
+												{ausencia.TipoAusencia?.toLowerCase().replace("_", " ")}{" "}
+												-{" "}
 												{ausencia.FechaAusencia
-													? format(new Date(ausencia.FechaAusencia), "PPP", { locale: es })
+													? format(new Date(ausencia.FechaAusencia), "PPP", {
+															locale: es,
+														})
 													: "N/A"}
 											</p>
 										</div>
@@ -153,12 +199,12 @@ function ManagerDashboardPage() {
 								<Clock className="h-5 w-5" />
 								Asistencias Recientes
 							</CardTitle>
-							<CardDescription>
-								Últimos registros de tu equipo
-							</CardDescription>
+							<CardDescription>Últimos registros de tu equipo</CardDescription>
 						</div>
 						<Button variant="outline" size="sm" asChild>
-							<Link to="/_auth/app/manager/history">Ver historial completo</Link>
+							<Link to="/_auth/app/manager/history">
+								Ver historial completo
+							</Link>
 						</Button>
 					</div>
 				</CardHeader>
@@ -181,56 +227,69 @@ function ManagerDashboardPage() {
 								<div>Estado</div>
 							</div>
 							<div className="divide-y">
-								{attendances.slice(0, 10).map((asistencia: any, idx: number) => (
-									<div
-										key={idx}
-										className="grid grid-cols-4 gap-4 p-3 text-sm hover:bg-muted/50"
-									>
-										<div className="flex items-center gap-2">
-											<div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
-												<span className="text-xs font-semibold text-primary">
-													{asistencia.USUARIOS?.NombreCompleto?.charAt(0) || "E"}
-												</span>
+								{attendances
+									.slice(0, 10)
+									.map((asistencia: any, idx: number) => (
+										<div
+											key={idx}
+											className="grid grid-cols-4 gap-4 p-3 text-sm hover:bg-muted/50"
+										>
+											<div className="flex items-center gap-2">
+												<div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
+													<span className="text-xs font-semibold text-primary">
+														{asistencia.USUARIOS?.NombreCompleto?.charAt(0) ||
+															"E"}
+													</span>
+												</div>
+												<div>
+													<p className="font-medium truncate">
+														{asistencia.USUARIOS?.NombreCompleto || "Empleado"}
+													</p>
+													<p className="text-xs text-muted-foreground truncate">
+														{asistencia.USUARIOS?.CorreoInstitucional || ""}
+													</p>
+												</div>
 											</div>
 											<div>
-												<p className="font-medium truncate">
-													{asistencia.USUARIOS?.NombreCompleto || "Empleado"}
-												</p>
-												<p className="text-xs text-muted-foreground truncate">
-													{asistencia.USUARIOS?.CorreoInstitucional || ""}
-												</p>
-											</div>
-										</div>
-										<div>
-											<StatusBadge
-												variant={asistencia.Tipo === "ENTRADA" ? "success" : "warning"}
-											>
-												{asistencia.Tipo === "ENTRADA" ? "Entrada" : "Salida"}
-											</StatusBadge>
-										</div>
-										<div className="flex items-center gap-2">
-											<Calendar className="h-4 w-4 text-muted-foreground" />
-											{asistencia.FechaHora
-												? format(new Date(asistencia.FechaHora), "dd/MM/yyyy HH:mm")
-												: "N/A"}
-										</div>
-										<div>
-											{asistencia.EstadoPuntualidad ? (
 												<StatusBadge
 													variant={
-														asistencia.EstadoPuntualidad === "PUNTUAL"
+														asistencia.Tipo === "ENTRADA"
 															? "success"
 															: "warning"
 													}
 												>
-													{asistencia.EstadoPuntualidad.toLowerCase().replace("_", " ")}
+													{asistencia.Tipo === "ENTRADA" ? "Entrada" : "Salida"}
 												</StatusBadge>
-											) : (
-												<span className="text-muted-foreground">N/A</span>
-											)}
+											</div>
+											<div className="flex items-center gap-2">
+												<Calendar className="h-4 w-4 text-muted-foreground" />
+												{asistencia.FechaHora
+													? format(
+															new Date(asistencia.FechaHora),
+															"dd/MM/yyyy HH:mm",
+														)
+													: "N/A"}
+											</div>
+											<div>
+												{asistencia.EstadoPuntualidad ? (
+													<StatusBadge
+														variant={
+															asistencia.EstadoPuntualidad === "PUNTUAL"
+																? "success"
+																: "warning"
+														}
+													>
+														{asistencia.EstadoPuntualidad.toLowerCase().replace(
+															"_",
+															" ",
+														)}
+													</StatusBadge>
+												) : (
+													<span className="text-muted-foreground">N/A</span>
+												)}
+											</div>
 										</div>
-									</div>
-								))}
+									))}
 							</div>
 						</div>
 					)}
@@ -247,7 +306,8 @@ function ManagerDashboardPage() {
 								Mi Equipo
 							</CardTitle>
 							<CardDescription>
-								{totalEmployees} {totalEmployees === 1 ? "empleado" : "empleados"} a cargo
+								{totalEmployees}{" "}
+								{totalEmployees === 1 ? "empleado" : "empleados"} a cargo
 							</CardDescription>
 						</div>
 					</div>
@@ -265,10 +325,15 @@ function ManagerDashboardPage() {
 					) : (
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 							{employees.map((empleado) => {
-								const empAttendances = attendances.filter((a) => a.IdUsuario === empleado.IdUsuario);
+								const empAttendances = attendances.filter(
+									(a) => a.IdUsuario === empleado.IdUsuario,
+								);
 								const checkedInToday = empAttendances.some((a) => {
 									if (!a.FechaHora) return false;
-									return new Date(a.FechaHora).toDateString() === today && a.Tipo === "ENTRADA";
+									return (
+										new Date(a.FechaHora).toDateString() === today &&
+										a.Tipo === "ENTRADA"
+									);
 								});
 
 								return (
@@ -283,7 +348,9 @@ function ManagerDashboardPage() {
 												</span>
 											</div>
 											<div className="flex-1 min-w-0">
-												<p className="font-medium truncate">{empleado.NombreCompleto}</p>
+												<p className="font-medium truncate">
+													{empleado.NombreCompleto}
+												</p>
 												<p className="text-xs text-muted-foreground truncate">
 													{empleado.CorreoInstitucional}
 												</p>

@@ -1,22 +1,31 @@
 // Historial de asistencias del equipo para el manager
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
-import { useAuth } from "#/features/auth";
-import { useManagerEmployees, useAbsence } from "#/features/attendance/hooks/useAttendance";
-import { 
-	ArrowLeft, 
-	Clock, 
-	Calendar, 
-	Users, 
-	FileText,
-	Search,
-	Filter
-} from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
+import {
+	ArrowLeft,
+	Calendar,
+	Clock,
+	FileText,
+	Filter,
+	Search,
+	Users,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+	useAbsence,
+	useManagerEmployees,
+} from "#/features/attendance/hooks/useAttendance";
+import { useAuth } from "#/features/auth";
 import { StatusBadge } from "@/components/custom/StatusBadge";
+import { Button } from "@/components/ui/button";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
 	Select,
@@ -32,14 +41,15 @@ export const Route = createFileRoute("/_auth/app/manager/history")({
 
 function ManagerHistoryPage() {
 	const { usuarioApp } = useAuth();
-	const { getManagerEmployees, getEmployeesAttendances } = useManagerEmployees();
+	const { getManagerEmployees, getEmployeesAttendances } =
+		useManagerEmployees();
 	const { getPendingAbsencesForManager } = useAbsence();
-	
+
 	const [employees, setEmployees] = useState<any[]>([]);
 	const [attendances, setAttendances] = useState<any[]>([]);
 	const [pendingAbsences, setPendingAbsences] = useState<any[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
-	
+
 	// Filtros
 	const [searchTerm, setSearchTerm] = useState("");
 	const [selectedEmployee, setSelectedEmployee] = useState<string>("all");
@@ -62,29 +72,42 @@ function ManagerHistoryPage() {
 		};
 
 		loadData();
-	}, [usuarioApp, getManagerEmployees, getEmployeesAttendances, getPendingAbsencesForManager]);
+	}, [
+		usuarioApp,
+		getManagerEmployees,
+		getEmployeesAttendances,
+		getPendingAbsencesForManager,
+	]);
 
 	// Filtrar asistencias
 	const filteredAttendances = attendances.filter((a) => {
-		const matchesSearch = searchTerm === "" || 
-			a.USUARIOS?.NombreCompleto?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			a.USUARIOS?.CorreoInstitucional?.toLowerCase().includes(searchTerm.toLowerCase());
-		
-		const matchesEmployee = selectedEmployee === "all" || 
-			a.IdUsuario.toString() === selectedEmployee;
-		
+		const matchesSearch =
+			searchTerm === "" ||
+			a.USUARIOS?.NombreCompleto?.toLowerCase().includes(
+				searchTerm.toLowerCase(),
+			) ||
+			a.USUARIOS?.CorreoInstitucional?.toLowerCase().includes(
+				searchTerm.toLowerCase(),
+			);
+
+		const matchesEmployee =
+			selectedEmployee === "all" || a.IdUsuario.toString() === selectedEmployee;
+
 		const matchesType = selectedType === "all" || a.Tipo === selectedType;
 
 		return matchesSearch && matchesEmployee && matchesType;
 	});
 
 	// Agrupar por empleado
-	const groupedByEmployee = filteredAttendances.reduce((acc, attendance) => {
-		const empId = attendance.IdUsuario;
-		if (!acc[empId]) acc[empId] = [];
-		acc[empId].push(attendance);
-		return acc;
-	}, {} as Record<number, any[]>);
+	const groupedByEmployee = filteredAttendances.reduce(
+		(acc, attendance) => {
+			const empId = attendance.IdUsuario;
+			if (!acc[empId]) acc[empId] = [];
+			acc[empId].push(attendance);
+			return acc;
+		},
+		{} as Record<number, any[]>,
+	);
 
 	return (
 		<div className="space-y-6">
@@ -95,7 +118,9 @@ function ManagerHistoryPage() {
 					</Link>
 				</Button>
 				<div>
-					<h1 className="text-3xl font-bold tracking-tight">Historial del Equipo</h1>
+					<h1 className="text-3xl font-bold tracking-tight">
+						Historial del Equipo
+					</h1>
 					<p className="text-muted-foreground">
 						Consulta todas las asistencias de tu equipo
 					</p>
@@ -121,14 +146,20 @@ function ManagerHistoryPage() {
 								className="pl-10"
 							/>
 						</div>
-						<Select value={selectedEmployee} onValueChange={setSelectedEmployee}>
+						<Select
+							value={selectedEmployee}
+							onValueChange={setSelectedEmployee}
+						>
 							<SelectTrigger>
 								<SelectValue placeholder="Todos los empleados" />
 							</SelectTrigger>
 							<SelectContent>
 								<SelectItem value="all">Todos los empleados</SelectItem>
 								{employees.map((emp) => (
-									<SelectItem key={emp.IdUsuario} value={emp.IdUsuario.toString()}>
+									<SelectItem
+										key={emp.IdUsuario}
+										value={emp.IdUsuario.toString()}
+									>
 										{emp.NombreCompleto}
 									</SelectItem>
 								))}
@@ -209,84 +240,108 @@ function ManagerHistoryPage() {
 						</div>
 					) : (
 						<div className="space-y-6">
-							{Object.entries(groupedByEmployee).map(([empId, empAttendances]) => {
-								const employee = employees.find((e) => e.IdUsuario.toString() === empId);
-								if (!employee) return null;
+							{Object.entries(groupedByEmployee).map(
+								([empId, empAttendances]) => {
+									const employee = employees.find(
+										(e) => e.IdUsuario.toString() === empId,
+									);
+									if (!employee) return null;
 
-								return (
-									<div key={empId}>
-										<div className="flex items-center gap-3 mb-3 pb-2 border-b">
-											<div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-												<span className="text-sm font-semibold text-primary">
-													{employee.NombreCompleto.charAt(0)}
-												</span>
+									return (
+										<div key={empId}>
+											<div className="flex items-center gap-3 mb-3 pb-2 border-b">
+												<div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+													<span className="text-sm font-semibold text-primary">
+														{employee.NombreCompleto.charAt(0)}
+													</span>
+												</div>
+												<div>
+													<h3 className="font-semibold">
+														{employee.NombreCompleto}
+													</h3>
+													<p className="text-sm text-muted-foreground">
+														{employee.CorreoInstitucional}
+													</p>
+												</div>
+												<div className="ml-auto text-sm text-muted-foreground">
+													{empAttendances.length} registros
+												</div>
 											</div>
-											<div>
-												<h3 className="font-semibold">{employee.NombreCompleto}</h3>
-												<p className="text-sm text-muted-foreground">
-													{employee.CorreoInstitucional}
-												</p>
-											</div>
-											<div className="ml-auto text-sm text-muted-foreground">
-												{empAttendances.length} registros
-											</div>
-										</div>
-										<div className="rounded-md border">
-											<div className="grid grid-cols-4 gap-4 p-3 bg-muted font-medium text-sm">
-												<div>Fecha</div>
-												<div>Tipo</div>
-												<div>Hora</div>
-												<div>Estado</div>
-											</div>
-											<div className="divide-y">
-												{empAttendances.map((asistencia: any, idx: number) => (
-													<div
-														key={idx}
-														className="grid grid-cols-4 gap-4 p-3 text-sm hover:bg-muted/50"
-													>
-														<div className="flex items-center gap-2">
-															<Calendar className="h-4 w-4 text-muted-foreground" />
-															{asistencia.FechaHora
-																? format(new Date(asistencia.FechaHora), "dd/MM/yyyy")
-																: "N/A"}
-														</div>
-														<div>
-															<StatusBadge
-																variant={
-																	asistencia.Tipo === "ENTRADA" ? "success" : "warning"
-																}
+											<div className="rounded-md border">
+												<div className="grid grid-cols-4 gap-4 p-3 bg-muted font-medium text-sm">
+													<div>Fecha</div>
+													<div>Tipo</div>
+													<div>Hora</div>
+													<div>Estado</div>
+												</div>
+												<div className="divide-y">
+													{empAttendances.map(
+														(asistencia: any, idx: number) => (
+															<div
+																key={idx}
+																className="grid grid-cols-4 gap-4 p-3 text-sm hover:bg-muted/50"
 															>
-																{asistencia.Tipo === "ENTRADA" ? "Entrada" : "Salida"}
-															</StatusBadge>
-														</div>
-														<div className="flex items-center gap-2">
-															<Clock className="h-4 w-4 text-muted-foreground" />
-															{asistencia.FechaHora
-																? format(new Date(asistencia.FechaHora), "HH:mm:ss")
-																: "N/A"}
-														</div>
-														<div>
-															{asistencia.EstadoPuntualidad ? (
-																<StatusBadge
-																	variant={
-																		asistencia.EstadoPuntualidad === "PUNTUAL"
-																			? "success"
-																			: "warning"
-																	}
-																>
-																	{asistencia.EstadoPuntualidad.toLowerCase().replace("_", " ")}
-																</StatusBadge>
-															) : (
-																<span className="text-muted-foreground">N/A</span>
-															)}
-														</div>
-													</div>
-												))}
+																<div className="flex items-center gap-2">
+																	<Calendar className="h-4 w-4 text-muted-foreground" />
+																	{asistencia.FechaHora
+																		? format(
+																				new Date(asistencia.FechaHora),
+																				"dd/MM/yyyy",
+																			)
+																		: "N/A"}
+																</div>
+																<div>
+																	<StatusBadge
+																		variant={
+																			asistencia.Tipo === "ENTRADA"
+																				? "success"
+																				: "warning"
+																		}
+																	>
+																		{asistencia.Tipo === "ENTRADA"
+																			? "Entrada"
+																			: "Salida"}
+																	</StatusBadge>
+																</div>
+																<div className="flex items-center gap-2">
+																	<Clock className="h-4 w-4 text-muted-foreground" />
+																	{asistencia.FechaHora
+																		? format(
+																				new Date(asistencia.FechaHora),
+																				"HH:mm:ss",
+																			)
+																		: "N/A"}
+																</div>
+																<div>
+																	{asistencia.EstadoPuntualidad ? (
+																		<StatusBadge
+																			variant={
+																				asistencia.EstadoPuntualidad ===
+																				"PUNTUAL"
+																					? "success"
+																					: "warning"
+																			}
+																		>
+																			{asistencia.EstadoPuntualidad.toLowerCase().replace(
+																				"_",
+																				" ",
+																			)}
+																		</StatusBadge>
+																	) : (
+																		<span className="text-muted-foreground">
+																			N/A
+																		</span>
+																	)}
+																</div>
+															</div>
+														),
+													)}
+												</div>
 											</div>
 										</div>
-									</div>
-								);
-							})}
+									);
+								},
+							)}
 						</div>
 					)}
 				</CardContent>
@@ -329,9 +384,12 @@ function ManagerHistoryPage() {
 												{ausencia.USUARIOS?.NombreCompleto || "Empleado"}
 											</p>
 											<p className="text-xs text-muted-foreground">
-												{ausencia.TipoAusencia?.toLowerCase().replace("_", " ")} -{" "}
+												{ausencia.TipoAusencia?.toLowerCase().replace("_", " ")}{" "}
+												-{" "}
 												{ausencia.FechaAusencia
-													? format(new Date(ausencia.FechaAusencia), "PPP", { locale: es })
+													? format(new Date(ausencia.FechaAusencia), "PPP", {
+															locale: es,
+														})
 													: "N/A"}
 											</p>
 										</div>

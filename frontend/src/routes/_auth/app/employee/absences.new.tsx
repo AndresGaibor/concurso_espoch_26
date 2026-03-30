@@ -1,14 +1,35 @@
 // Formulario para crear nueva solicitud de ausencia
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import {
+	ArrowLeft,
+	Calendar,
+	CheckCircle,
+	Clock,
+	FileText,
+} from "lucide-react";
 import { useState } from "react";
-import { useAuth } from "#/features/auth";
+import { useForm } from "react-hook-form";
 import { useAbsence } from "#/features/attendance/hooks/useAttendance";
-import { Calendar, Clock, FileText, ArrowLeft, CheckCircle } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { TIPOS_AUSENCIA } from "#/features/attendance/types/attendance.types";
+import { useAuth } from "#/features/auth";
 import { Button } from "@/components/ui/button";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
 	Select,
 	SelectContent,
@@ -16,16 +37,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import {
-	FormField,
-	FormItem,
-	FormLabel,
-	FormControl,
-	FormMessage,
-	Form,
-} from "@/components/ui/form";
-import { useForm } from "react-hook-form";
-import { TIPOS_AUSENCIA } from "#/features/attendance/types/attendance.types";
+import { Textarea } from "@/components/ui/textarea";
 
 export const Route = createFileRoute("/_auth/app/employee/absences/new")({
 	component: NewAbsencePage,
@@ -90,8 +102,8 @@ function NewAbsencePage() {
 					</CardHeader>
 					<CardContent>
 						<p className="text-muted-foreground">
-							Tu solicitud de ausencia ha sido enviada correctamente. Tu jefe directo la revisará
-							pronto.
+							Tu solicitud de ausencia ha sido enviada correctamente. Tu jefe
+							directo la revisará pronto.
 						</p>
 						<div className="mt-4">
 							<Button asChild variant="outline">
@@ -113,7 +125,9 @@ function NewAbsencePage() {
 					</Link>
 				</Button>
 				<div>
-					<h1 className="text-3xl font-bold tracking-tight">Nueva Solicitud de Ausencia</h1>
+					<h1 className="text-3xl font-bold tracking-tight">
+						Nueva Solicitud de Ausencia
+					</h1>
 					<p className="text-muted-foreground">
 						Completa el formulario para justificar tu inasistencia
 					</p>
@@ -159,18 +173,23 @@ function NewAbsencePage() {
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>Tipo de Ausencia</FormLabel>
-											<Select onValueChange={field.onChange} defaultValue={field.value}>
+											<Select
+												onValueChange={field.onChange}
+												defaultValue={field.value}
+											>
 												<FormControl>
 													<SelectTrigger>
 														<SelectValue placeholder="Selecciona un tipo" />
 													</SelectTrigger>
 												</FormControl>
 												<SelectContent>
-													{Object.entries(TIPOS_AUSENCIA).map(([key, value]) => (
-														<SelectItem key={key} value={value}>
-															{value.toLowerCase().replace("_", " ")}
-														</SelectItem>
-													))}
+													{Object.entries(TIPOS_AUSENCIA).map(
+														([key, value]) => (
+															<SelectItem key={key} value={value}>
+																{value.toLowerCase().replace("_", " ")}
+															</SelectItem>
+														),
+													)}
 												</SelectContent>
 											</Select>
 											<FormMessage />
@@ -245,7 +264,11 @@ function NewAbsencePage() {
 							)}
 
 							<div className="flex gap-3">
-								<Button type="submit" disabled={isLoading || isSubmitting} className="gap-2">
+								<Button
+									type="submit"
+									disabled={isLoading || isSubmitting}
+									className="gap-2"
+								>
 									{isSubmitting ? "Enviando..." : "Enviar Solicitud"}
 								</Button>
 								<Button type="button" variant="outline" asChild>

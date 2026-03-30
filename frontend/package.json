@@ -1,64 +1,64 @@
 {
-  "name": "frontend",
-  "private": true,
-  "type": "module",
-  "imports": {
-    "#/*": "./src/*"
-  },
-  "scripts": {
-    "dev": "bun run db:types && vite dev --port 3000",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "vitest run",
-    "check": "biome check .",
-    "check:fix": "biome check --write .",
-    "db:types": "supabase gen types typescript --project-id wvvattvssuwbhbgenhra --schema public > src/types/database.ts",
-    "typecheck": "tsc -p tsconfig.json --pretty false",
-    "format": "biome format --write ."
-  },
-  "dependencies": {
-    "@base-ui/react": "^1.3.0",
-    "@hookform/resolvers": "^5.2.2",
-    "@supabase/supabase-js": "^2.100.1",
-    "@tailwindcss/vite": "^4.1.18",
-    "@tanstack/react-devtools": "latest",
-    "@tanstack/react-router": "latest",
-    "@tanstack/react-router-devtools": "latest",
-    "@tanstack/react-table": "^8.21.3",
-    "class-variance-authority": "^0.7.1",
-    "date-fns": "^4.1.0",
-    "install": "^0.13.0",
-    "lucide-react": "^1.7.0",
-    "radix-ui": "^1.4.3",
-    "react": "^19.2.0",
-    "react-day-picker": "^9.14.0",
-    "react-dom": "^19.2.0",
-    "react-hook-form": "^7.72.0",
-    "tailwind-merge": "^3.5.0",
-    "tailwindcss": "^4.1.18",
-    "zod": "^4.3.6"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.4.9",
-    "@tailwindcss/typography": "^0.5.16",
-    "@tanstack/devtools-vite": "latest",
-    "@tanstack/router-plugin": "latest",
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/react": "^16.3.0",
-    "@types/node": "^22.10.2",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
-    "@vitejs/plugin-react": "^5.1.4",
-    "jsdom": "^28.1.0",
-    "typescript": "^5.7.2",
-    "vite": "^7.3.1",
-    "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.0.5"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "lightningcss"
-    ]
-  }
+	"name": "frontend",
+	"private": true,
+	"type": "module",
+	"imports": {
+		"#/*": "./src/*"
+	},
+	"scripts": {
+		"dev": "bun run db:types && vite dev --port 3000",
+		"build": "vite build",
+		"preview": "vite preview",
+		"test": "vitest run",
+		"check": "biome check .",
+		"check:fix": "biome check --write .",
+		"db:types": "supabase gen types typescript --project-id wvvattvssuwbhbgenhra --schema public > src/types/database.ts",
+		"typecheck": "tsc -p tsconfig.json --pretty false",
+		"format": "biome format --write ."
+	},
+	"dependencies": {
+		"@base-ui/react": "^1.3.0",
+		"@hookform/resolvers": "^5.2.2",
+		"@supabase/supabase-js": "^2.100.1",
+		"@tailwindcss/vite": "^4.1.18",
+		"@tanstack/react-devtools": "latest",
+		"@tanstack/react-router": "latest",
+		"@tanstack/react-router-devtools": "latest",
+		"@tanstack/react-table": "^8.21.3",
+		"class-variance-authority": "^0.7.1",
+		"date-fns": "^4.1.0",
+		"install": "^0.13.0",
+		"lucide-react": "^1.7.0",
+		"radix-ui": "^1.4.3",
+		"react": "^19.2.0",
+		"react-day-picker": "^9.14.0",
+		"react-dom": "^19.2.0",
+		"react-hook-form": "^7.72.0",
+		"tailwind-merge": "^3.5.0",
+		"tailwindcss": "^4.1.18",
+		"zod": "^4.3.6"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.9",
+		"@tailwindcss/typography": "^0.5.16",
+		"@tanstack/devtools-vite": "latest",
+		"@tanstack/router-plugin": "latest",
+		"@testing-library/dom": "^10.4.1",
+		"@testing-library/react": "^16.3.0",
+		"@types/node": "^22.10.2",
+		"@types/react": "^19.2.0",
+		"@types/react-dom": "^19.2.0",
+		"@vitejs/plugin-react": "^5.1.4",
+		"jsdom": "^28.1.0",
+		"typescript": "^5.7.2",
+		"vite": "^7.3.1",
+		"vite-tsconfig-paths": "^5.1.4",
+		"vitest": "^3.0.5"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"lightningcss"
+		]
+	}
 }

@@ -1,10 +1,15 @@
 // PortalLogin — Página de login estilo institucional Norbert Wiener EX
-import { Button } from "@/components/ui/button";
+
 import { useAuth } from "#/features/auth/hooks/useAuth";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const MicrosoftIcon = ({ className }: { className?: string }) => (
-	<svg className={className} viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
+	<svg
+		className={className}
+		viewBox="0 0 21 21"
+		xmlns="http://www.w3.org/2000/svg"
+	>
 		<rect x="1" y="1" width="9" height="9" fill="#f25022" />
 		<rect x="11" y="1" width="9" height="9" fill="#00a4ef" />
 		<rect x="1" y="11" width="9" height="9" fill="#7fba00" />
@@ -16,7 +21,16 @@ const Icon = ({
 	name,
 	className,
 }: {
-	name: "school" | "verified_user" | "speed" | "account_balance" | "help_outline" | "lock_reset" | "language" | "keyboard_arrow_down" | "arrow_forward";
+	name:
+		| "school"
+		| "verified_user"
+		| "speed"
+		| "account_balance"
+		| "help_outline"
+		| "lock_reset"
+		| "language"
+		| "keyboard_arrow_down"
+		| "arrow_forward";
 	className?: string;
 }) => (
 	<span className={cn("material-symbols-outlined", className)}>{name}</span>
@@ -50,10 +64,7 @@ export function PortalLogin() {
 										<stop offset="100%" stopColor="white" stopOpacity="0" />
 									</linearGradient>
 								</defs>
-								<polygon
-									points="200,0 200,200 0,200"
-									fill="url(#grad)"
-								/>
+								<polygon points="200,0 200,200 0,200" fill="url(#grad)" />
 								<line
 									x1="200"
 									y1="0"
@@ -246,8 +257,12 @@ export function PortalLogin() {
 					© 2024 Universidad Norbert Wiener | Todos los derechos reservados.
 				</p>
 				<div className="mt-2 flex justify-center gap-6">
-					<span className="text-[10px] text-slate-300">Versión 2.4.0-Academic</span>
-					<span className="text-[10px] text-slate-300">Precisión y Servicio</span>
+					<span className="text-[10px] text-slate-300">
+						Versión 2.4.0-Academic
+					</span>
+					<span className="text-[10px] text-slate-300">
+						Precisión y Servicio
+					</span>
 				</div>
 			</footer>
 		</div>

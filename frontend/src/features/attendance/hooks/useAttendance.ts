@@ -1,13 +1,13 @@
 // Hooks para gestión de asistencias y ausencias
-import { useState, useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { supabase } from "#/lib/supabase";
 import type {
-	AsistenciaRow,
 	AsistenciaInsert,
-	AusenciaRow,
-	AusenciaInsert,
-	AusenciaUpdate,
+	AsistenciaRow,
 	AusenciaFormData,
+	AusenciaInsert,
+	AusenciaRow,
+	AusenciaUpdate,
 } from "./attendance.types";
 
 // ==================== HOOK PARA ASISTENCIAS ====================
@@ -42,7 +42,8 @@ export function useAttendance() {
 				if (error) throw error;
 				return asistencia;
 			} catch (err) {
-				const message = err instanceof Error ? err.message : "Error al registrar asistencia";
+				const message =
+					err instanceof Error ? err.message : "Error al registrar asistencia";
 				setError(message);
 				return null;
 			} finally {
@@ -69,7 +70,8 @@ export function useAttendance() {
 				if (error) throw error;
 				return data || [];
 			} catch (err) {
-				const message = err instanceof Error ? err.message : "Error al obtener asistencias";
+				const message =
+					err instanceof Error ? err.message : "Error al obtener asistencias";
 				setError(message);
 				return [];
 			} finally {
@@ -97,7 +99,10 @@ export function useAttendance() {
 				if (error && error.code !== "PGRST116") throw error;
 				return data;
 			} catch (err) {
-				const message = err instanceof Error ? err.message : "Error al obtener última asistencia";
+				const message =
+					err instanceof Error
+						? err.message
+						: "Error al obtener última asistencia";
 				setError(message);
 				return null;
 			} finally {
@@ -130,7 +135,10 @@ export function useAttendance() {
 				if (error) throw error;
 				return data || [];
 			} catch (err) {
-				const message = err instanceof Error ? err.message : "Error al obtener asistencias por fecha";
+				const message =
+					err instanceof Error
+						? err.message
+						: "Error al obtener asistencias por fecha";
 				setError(message);
 				return [];
 			} finally {
@@ -174,7 +182,8 @@ export function useAbsence() {
 				// Calcular total de horas
 				const inicio = new Date(`1970-01-01T${data.HoraInicio}`);
 				const fin = new Date(`1970-01-01T${data.HoraFin}`);
-				const totalHoras = (fin.getTime() - inicio.getTime()) / (1000 * 60 * 60);
+				const totalHoras =
+					(fin.getTime() - inicio.getTime()) / (1000 * 60 * 60);
 
 				const { data: ausencia, error } = await supabase
 					.from("AUSENCIAS")
@@ -190,7 +199,8 @@ export function useAbsence() {
 				if (error) throw error;
 				return ausencia;
 			} catch (err) {
-				const message = err instanceof Error ? err.message : "Error al crear ausencia";
+				const message =
+					err instanceof Error ? err.message : "Error al crear ausencia";
 				setError(message);
 				return null;
 			} finally {
@@ -216,7 +226,8 @@ export function useAbsence() {
 				if (error) throw error;
 				return data || [];
 			} catch (err) {
-				const message = err instanceof Error ? err.message : "Error al obtener ausencias";
+				const message =
+					err instanceof Error ? err.message : "Error al obtener ausencias";
 				setError(message);
 				return [];
 			} finally {
@@ -243,7 +254,10 @@ export function useAbsence() {
 				if (error) throw error;
 				return data || [];
 			} catch (err) {
-				const message = err instanceof Error ? err.message : "Error al obtener ausencias pendientes";
+				const message =
+					err instanceof Error
+						? err.message
+						: "Error al obtener ausencias pendientes";
 				setError(message);
 				return [];
 			} finally {
@@ -279,7 +293,8 @@ export function useAbsence() {
 				if (error) throw error;
 				return ausencia;
 			} catch (err) {
-				const message = err instanceof Error ? err.message : "Error al actualizar ausencia";
+				const message =
+					err instanceof Error ? err.message : "Error al actualizar ausencia";
 				setError(message);
 				return null;
 			} finally {
@@ -305,7 +320,8 @@ export function useAbsence() {
 				if (error) throw error;
 				return data;
 			} catch (err) {
-				const message = err instanceof Error ? err.message : "Error al obtener ausencia";
+				const message =
+					err instanceof Error ? err.message : "Error al obtener ausencia";
 				setError(message);
 				return null;
 			} finally {
@@ -333,29 +349,27 @@ export function useManagerEmployees() {
 	const [error, setError] = useState<string | null>(null);
 
 	// Obtener empleados de un jefe
-	const getManagerEmployees = useCallback(
-		async (managerId: number) => {
-			setIsLoading(true);
-			setError(null);
+	const getManagerEmployees = useCallback(async (managerId: number) => {
+		setIsLoading(true);
+		setError(null);
 
-			try {
-				const { data, error } = await supabase
-					.from("USUARIOS")
-					.select("*, ROLES(*)")
-					.eq("IdJefeDirecto", managerId);
+		try {
+			const { data, error } = await supabase
+				.from("USUARIOS")
+				.select("*, ROLES(*)")
+				.eq("IdJefeDirecto", managerId);
 
-				if (error) throw error;
-				return data || [];
-			} catch (err) {
-				const message = err instanceof Error ? err.message : "Error al obtener empleados";
-				setError(message);
-				return [];
-			} finally {
-				setIsLoading(false);
-			}
-		},
-		[],
-	);
+			if (error) throw error;
+			return data || [];
+		} catch (err) {
+			const message =
+				err instanceof Error ? err.message : "Error al obtener empleados";
+			setError(message);
+			return [];
+		} finally {
+			setIsLoading(false);
+		}
+	}, []);
 
 	// Obtener asistencias de todos los empleados
 	const getEmployeesAttendances = useCallback(
@@ -389,7 +403,10 @@ export function useManagerEmployees() {
 				if (errorAsistencias) throw errorAsistencias;
 				return asistencias || [];
 			} catch (err) {
-				const message = err instanceof Error ? err.message : "Error al obtener asistencias de empleados";
+				const message =
+					err instanceof Error
+						? err.message
+						: "Error al obtener asistencias de empleados";
 				setError(message);
 				return [];
 			} finally {
