@@ -1,0 +1,33 @@
+build.ts(62,4): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Partial<BuildConfig>'.
+  No index signature with a parameter of type 'string' was found on type 'Partial<BuildConfig>'.
+build.ts(71,4): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Partial<BuildConfig>'.
+  No index signature with a parameter of type 'string' was found on type 'Partial<BuildConfig>'.
+build.ts(89,4): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Partial<BuildConfig>'.
+  No index signature with a parameter of type 'string' was found on type 'Partial<BuildConfig>'.
+build.ts(89,24): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Partial<BuildConfig>'.
+  No index signature with a parameter of type 'string' was found on type 'Partial<BuildConfig>'.
+build.ts(90,4): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Partial<BuildConfig>'.
+  No index signature with a parameter of type 'string' was found on type 'Partial<BuildConfig>'.
+build.ts(92,4): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Partial<BuildConfig>'.
+  No index signature with a parameter of type 'string' was found on type 'Partial<BuildConfig>'.
+src/components/ui/calendar.tsx(11,8): error TS2307: Cannot find module 'react-day-picker' or its corresponding type declarations.
+src/components/ui/calendar.tsx(41,31): error TS7006: Parameter 'date' implicitly has an 'any' type.
+src/components/ui/calendar.tsx(133,18): error TS7031: Binding element 'className' implicitly has an 'any' type.
+src/components/ui/calendar.tsx(133,29): error TS7031: Binding element 'rootRef' implicitly has an 'any' type.
+src/components/ui/calendar.tsx(143,21): error TS7031: Binding element 'className' implicitly has an 'any' type.
+src/components/ui/calendar.tsx(143,32): error TS7031: Binding element 'orientation' implicitly has an 'any' type.
+src/components/ui/calendar.tsx(164,24): error TS7031: Binding element 'children' implicitly has an 'any' type.
+src/components/ui/combobox.tsx(4,47): error TS2307: Cannot find module '@base-ui/react' or its corresponding type declarations.
+src/index.ts(10,14): error TS6133: 'req' is declared but its value is never read.
+src/index.ts(16,14): error TS6133: 'req' is declared but its value is never read.
+src/routes/__root.tsx(6,1): error TS6133: 'SidebarProvider' is declared but its value is never read.
+src/routes/login.tsx(2,27): error TS6133: 'redirect' is declared but its value is never read.
+src/routes/login.tsx(3,1): error TS6133: 'supabase' is declared but its value is never read.
+supabase/functions/admin-users/index.ts(1,8): error TS2307: Cannot find module 'jsr:@supabase/functions-js/edge-runtime.d.ts' or its corresponding type declarations.
+supabase/functions/admin-users/index.ts(2,30): error TS2307: Cannot find module 'npm:@supabase/supabase-js@2' or its corresponding type declarations.
+supabase/functions/admin-users/index.ts(4,21): error TS2304: Cannot find name 'Deno'.
+supabase/functions/admin-users/index.ts(5,24): error TS2304: Cannot find name 'Deno'.
+supabase/functions/admin-users/index.ts(6,17): error TS2304: Cannot find name 'Deno'.
+supabase/functions/admin-users/index.ts(135,1): error TS2304: Cannot find name 'Deno'.
+supabase/functions/admin-users/test.ts(3,21): error TS2304: Cannot find name 'Deno'.
+supabase/functions/admin-users/test.ts(4,24): error TS2304: Cannot find name 'Deno'.

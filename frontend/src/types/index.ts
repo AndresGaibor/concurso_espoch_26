@@ -5,6 +5,8 @@ import type { Database, Tables } from "./database";
 export type Profile = Tables<"profiles">;
 export type Blog = Tables<"blogs">;
 export type Post = Tables<"posts">;
+export type Usuario = Tables<"USUARIOS">;
+export type Rol = Tables<"ROLES">;
 
 // (crear)
 export type NewBlog = Database["public"]["Tables"]["blogs"]["Insert"];
