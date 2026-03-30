@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { useAuth } from "#/features/auth";
 import { useManagerEmployees, useAbsence } from "#/features/attendance/hooks/useAttendance";
-import { Users, FileCheck, Clock, Calendar, TrendingUp, AlertCircle, CheckCircle, XCircle } from "lucide-react";
+import { Users, FileCheck, Clock, Calendar, AlertCircle, CheckCircle, XCircle } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
@@ -104,7 +104,7 @@ function ManagerDashboardPage() {
 							Solicitudes Pendientes de Aprobación
 						</CardTitle>
 						<CardDescription>
-							Tienes {pendingAbsencesCount}{suspendedAbsencesCount === 1 ? "a solicitud" : "solicitudes"} esperando revisión
+							Tienes {pendingAbsencesCount} {pendingAbsencesCount === 1 ? "solicitud" : "solicitudes"} esperando revisión
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
@@ -320,7 +320,7 @@ function ManagerDashboardPage() {
 					<Link to="/_auth/app/manager/history">
 						<CardHeader>
 							<CardTitle className="flex items-center gap-2">
-								<History className="h-5 w-5" />
+								<Clock className="h-5 w-5" />
 								Historial del Equipo
 							</CardTitle>
 							<CardDescription>Ver todas las asistencias</CardDescription>
@@ -330,8 +330,4 @@ function ManagerDashboardPage() {
 			</div>
 		</div>
 	);
-}
-
-function History() {
-	return <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 12" /><path d="M3 3v9h9" /><path d="M12 7v5l4 2" /></svg>;
 }

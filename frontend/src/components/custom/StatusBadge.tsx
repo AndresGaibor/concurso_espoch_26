@@ -1,11 +1,14 @@
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import type { ReactNode } from "react";
 
 type AttendanceStatus = "PUNTUAL" | "TARDANZA" | "AUSENTE" | null | undefined;
 type ApprovalStatus = "PENDIENTE" | "APROBADO" | "RECHAZADO" | null | undefined;
 
 interface StatusBadgeProps {
-  status: AttendanceStatus | ApprovalStatus | string | null | undefined;
+  status?: AttendanceStatus | ApprovalStatus | string | null | undefined;
+  variant?: "success" | "warning" | "destructive" | "secondary" | "default";
+  children?: ReactNode;
   className?: string;
 }
 
@@ -20,9 +23,25 @@ const statusConfig: Record<string, { label: string; className: string }> = {
   INACTIVO:  { label: "Inactivo",  className: "status-absent" },
 };
 
-export function StatusBadge({ status, className }: StatusBadgeProps) {
-  const key = status?.toUpperCase() ?? "";
-  const config = statusConfig[key] ?? { label: status ?? "—", className: "bg-muted text-muted-foreground" };
+const variantConfig: Record<string, { label: string; className: string }> = {
+  success:  { label: "", className: "status-present" },
+  warning:  { label: "", className: "status-late" },
+  destructive: { label: "", className: "status-rejected" },
+  secondary: { label: "", className: "status-pending" },
+  default:  { label: "", className: "bg-muted text-muted-foreground" },
+};
+
+export function StatusBadge({ status, variant, children, className }: StatusBadgeProps) {
+  let config;
+  if (variant && variantConfig[variant]) {
+    config = variantConfig[variant];
+  } else {
+    const key = status?.toUpperCase() ?? "";
+    config = statusConfig[key] ?? { label: status ?? "—", className: "bg-muted text-muted-foreground" };
+  }
+  
+  const label = children?.toString() ?? config.label;
+  
   return (
     <Badge
       variant="outline"
@@ -32,7 +51,7 @@ export function StatusBadge({ status, className }: StatusBadgeProps) {
         className
       )}
     >
-      {config.label}
+      {label}
     </Badge>
   );
 }

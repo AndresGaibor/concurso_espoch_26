@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { useAuth } from "#/features/auth";
 import { useAttendance } from "#/features/attendance/hooks/useAttendance";
-import { Clock, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
+import { Clock, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";

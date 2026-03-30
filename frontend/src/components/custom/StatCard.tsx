@@ -6,10 +6,12 @@ interface StatCardProps {
   title: string;
   value: string | number;
   subtitle?: string;
+  description?: string;
   icon?: LucideIcon;
   trend?: "up" | "down" | "neutral";
   trendLabel?: string;
   variant?: "default" | "primary" | "success" | "warning" | "danger";
+  valueClass?: string;
   className?: string;
 }
 
@@ -33,9 +35,11 @@ export function StatCard({
   title,
   value,
   subtitle,
+  description,
   icon: Icon,
   trendLabel,
   variant = "default",
+  valueClass,
   className,
 }: StatCardProps) {
   return (
@@ -46,12 +50,12 @@ export function StatCard({
             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide truncate">
               {title}
             </p>
-            <p className="mt-1 text-2xl font-bold text-foreground tabular-nums">
+            <p className={cn("mt-1 text-2xl font-bold text-foreground tabular-nums", valueClass)}>
               {value}
             </p>
-            {(subtitle || trendLabel) && (
+            {(description || trendLabel) && (
               <p className="mt-1 text-xs text-muted-foreground">
-                {trendLabel ?? subtitle}
+                {description ?? trendLabel ?? subtitle}
               </p>
             )}
           </div>

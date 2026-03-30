@@ -1,6 +1,6 @@
 // Dashboard principal del empleado con registro de asistencia
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "#/features/auth";
 import { useAttendance } from "#/features/attendance/hooks/useAttendance";
 import { Clock, MapPin, CheckCircle, LogOut, AlertCircle, Calendar } from "lucide-react";
@@ -14,7 +14,7 @@ export const Route = createFileRoute("/_auth/app/employee/")({
 });
 
 function EmployeeDashboardPage() {
-	const { usuarioApp, rol } = useAuth();
+	const { usuarioApp } = useAuth();
 	const { registerAttendance, getLastAttendance, getUserAttendances, isLoading } = useAttendance();
 	const [lastAttendance, setLastAttendance] = useState<any>(null);
 	const [todayAttendances, setTodayAttendances] = useState<any[]>([]);
@@ -73,7 +73,7 @@ function EmployeeDashboardPage() {
 
 			// Filtrar asistencias de hoy
 			const todayStr = new Date().toDateString();
-			const todayData = today.filter((a) => {
+			const todayData = today.filter((a: any) => {
 				if (!a.FechaHora) return false;
 				return new Date(a.FechaHora).toDateString() === todayStr;
 			});
@@ -354,7 +354,7 @@ function EmployeeDashboardPage() {
 					<Link to="/_auth/app/employee/history">
 						<CardHeader>
 							<CardTitle className="flex items-center gap-2">
-								<History className="h-5 w-5" />
+								<Clock className="h-5 w-5" />
 								Historial
 							</CardTitle>
 							<CardDescription>Ver historial detallado</CardDescription>
@@ -364,8 +364,4 @@ function EmployeeDashboardPage() {
 			</div>
 		</div>
 	);
-}
-
-function History() {
-	return <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 12" /><path d="M3 3v9h9" /><path d="M12 7v5l4 2" /></svg>;
 }
