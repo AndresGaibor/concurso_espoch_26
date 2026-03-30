@@ -18,5 +18,7 @@ function AppIndex() {
 		return <Navigate to="/app/employee" />;
 	}
 
-	return <Navigate to="/unauthorized" />;
+	// Temporalmente permite cualquier usuario autenticado (sin verificar rol)
+	// TODO: remover esta línea cuando se implemente la creación automática de usuarios OAuth
+	return <Navigate to="/app/admin" />;
 }

@@ -12,11 +12,12 @@ export const Route = createFileRoute("/_auth/app/manager")({
 				search: { redirect: location.href },
 			});
 		}
-		if (!authStore.isManager) {
-			throw redirect({
-				to: "/unauthorized",
-			});
-		}
+		// TODO: remover verificación de rol cuando se implemente creación automática de usuarios OAuth
+		// if (!authStore.isManager) {
+		// 	throw redirect({
+		// 		to: "/unauthorized",
+		// 	});
+		// }
 	},
 	component: () => <Outlet />,
 });

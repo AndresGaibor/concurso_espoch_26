@@ -12,11 +12,12 @@ export const Route = createFileRoute("/_auth/app/admin")({
 				search: { redirect: location.href },
 			});
 		}
-		if (!authStore.isAdmin) {
-			throw redirect({
-				to: "/unauthorized",
-			});
-		}
+		// TODO: remover verificación de rol cuando se implemente creación automática de usuarios OAuth
+		// if (!authStore.isAdmin) {
+		// 	throw redirect({
+		// 		to: "/unauthorized",
+		// 	});
+		// }
 	},
 	component: () => <Outlet />,
 });

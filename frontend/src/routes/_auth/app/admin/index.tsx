@@ -2,7 +2,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_auth/app/admin/")({
-  component: AdminDashboard,
+  component: AdminIndexPage,
 });
 
 function AdminIndexPage() {
