@@ -146,6 +146,12 @@
       "type": "directory"
     },
     {
+      "path": "src/routeTree.gen.ts",
+      "accessCount": 5,
+      "lastAccessed": 1774895415527,
+      "type": "file"
+    },
+    {
       "path": "src/App.tsx",
       "accessCount": 4,
       "lastAccessed": 1774867080061,
@@ -170,16 +176,16 @@
       "type": "file"
     },
     {
-      "path": "src/routeTree.gen.ts",
-      "accessCount": 4,
-      "lastAccessed": 1774891503290,
-      "type": "file"
-    },
-    {
       "path": "src",
       "accessCount": 4,
       "lastAccessed": 1774891538368,
       "type": "directory"
+    },
+    {
+      "path": "src/features/auth/stores/authStore.ts",
+      "accessCount": 4,
+      "lastAccessed": 1774895497796,
+      "type": "file"
     },
     {
       "path": "src/components/ProtectedRoute.tsx",
@@ -209,12 +215,6 @@
       "path": "src/features/auth/types/auth.types.ts",
       "accessCount": 3,
       "lastAccessed": 1774891269733,
-      "type": "file"
-    },
-    {
-      "path": "src/features/auth/stores/authStore.ts",
-      "accessCount": 3,
-      "lastAccessed": 1774891497302,
       "type": "file"
     },
     {
@@ -273,8 +273,8 @@
     },
     {
       "path": "src/routes/_auth.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1774866924233,
+      "accessCount": 2,
+      "lastAccessed": 1774895477515,
       "type": "file"
     },
     {
@@ -420,6 +420,24 @@
       "accessCount": 1,
       "lastAccessed": 1774891517439,
       "type": "directory"
+    },
+    {
+      "path": "src/routes/unauthorized.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774895477568,
+      "type": "file"
+    },
+    {
+      "path": "src/routes/_auth/app.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774895492272,
+      "type": "file"
+    },
+    {
+      "path": "src/routes/_auth/app/index.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774895492324,
+      "type": "file"
     }
   ],
   "userDirectives": []

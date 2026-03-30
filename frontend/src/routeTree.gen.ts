@@ -15,6 +15,7 @@ import { Route as GpsRouteImport } from './routes/gps'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthCallbackRouteImport } from './routes/auth/callback'
 import { Route as AuthAppRouteImport } from './routes/_auth/app'
 import { Route as AuthAppIndexRouteImport } from './routes/_auth/app/index'
 import { Route as AuthAppProfileRouteImport } from './routes/_auth/app/profile'
@@ -64,6 +65,11 @@ const AuthRoute = AuthRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/auth/callback',
+  path: '/auth/callback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthAppRoute = AuthAppRouteImport.update({
@@ -182,6 +188,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/unauthorized': typeof UnauthorizedRoute
   '/app': typeof AuthAppRouteWithChildren
+  '/auth/callback': typeof AuthCallbackRoute
   '/app/admin': typeof AuthAppAdminRouteWithChildren
   '/app/employee': typeof AuthAppEmployeeRouteWithChildren
   '/app/manager': typeof AuthAppManagerRouteWithChildren
@@ -209,6 +216,7 @@ export interface FileRoutesByTo {
   '/gps': typeof GpsRoute
   '/login': typeof LoginRoute
   '/unauthorized': typeof UnauthorizedRoute
+  '/auth/callback': typeof AuthCallbackRoute
   '/app/profile': typeof AuthAppProfileRoute
   '/app': typeof AuthAppIndexRoute
   '/app/admin/absences': typeof AuthAppAdminAbsencesRoute
@@ -236,6 +244,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/unauthorized': typeof UnauthorizedRoute
   '/_auth/app': typeof AuthAppRouteWithChildren
+  '/auth/callback': typeof AuthCallbackRoute
   '/_auth/app/admin': typeof AuthAppAdminRouteWithChildren
   '/_auth/app/employee': typeof AuthAppEmployeeRouteWithChildren
   '/_auth/app/manager': typeof AuthAppManagerRouteWithChildren
@@ -266,6 +275,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/unauthorized'
     | '/app'
+    | '/auth/callback'
     | '/app/admin'
     | '/app/employee'
     | '/app/manager'
@@ -293,6 +303,7 @@ export interface FileRouteTypes {
     | '/gps'
     | '/login'
     | '/unauthorized'
+    | '/auth/callback'
     | '/app/profile'
     | '/app'
     | '/app/admin/absences'
@@ -319,6 +330,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/unauthorized'
     | '/_auth/app'
+    | '/auth/callback'
     | '/_auth/app/admin'
     | '/_auth/app/employee'
     | '/_auth/app/manager'
@@ -348,6 +360,7 @@ export interface RootRouteChildren {
   GpsRoute: typeof GpsRoute
   LoginRoute: typeof LoginRoute
   UnauthorizedRoute: typeof UnauthorizedRoute
+  AuthCallbackRoute: typeof AuthCallbackRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -392,6 +405,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/auth/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_auth/app': {
@@ -664,6 +684,7 @@ const rootRouteChildren: RootRouteChildren = {
   GpsRoute: GpsRoute,
   LoginRoute: LoginRoute,
   UnauthorizedRoute: UnauthorizedRoute,
+  AuthCallbackRoute: AuthCallbackRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
