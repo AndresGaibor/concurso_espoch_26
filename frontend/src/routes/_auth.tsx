@@ -3,14 +3,14 @@ import { authStore } from "#/features/auth/stores/authStore";
 
 export const Route = createFileRoute("/_auth")({
 	beforeLoad: ({ location }) => {
+		if (authStore.isLoading) {
+			return;
+		}
 		if (!authStore.isAuthenticated) {
 			throw redirect({
 				to: "/login",
 				search: { redirect: location.href },
 			});
-		}
-		if (authStore.isLoading) {
-			throw redirect({ to: "/login" });
 		}
 	},
 	component: () => <Outlet />,

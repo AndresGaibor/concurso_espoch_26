@@ -140,10 +140,46 @@
   },
   "hotPaths": [
     {
+      "path": "",
+      "accessCount": 7,
+      "lastAccessed": 1774891269943,
+      "type": "directory"
+    },
+    {
       "path": "src/App.tsx",
       "accessCount": 4,
       "lastAccessed": 1774867080061,
       "type": "file"
+    },
+    {
+      "path": "src/features/asistencias/hooks/useAsistencias.ts",
+      "accessCount": 4,
+      "lastAccessed": 1774891292768,
+      "type": "file"
+    },
+    {
+      "path": "src/features/auth/components/LoginForm.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1774891313269,
+      "type": "file"
+    },
+    {
+      "path": "src/routes/login.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1774891318531,
+      "type": "file"
+    },
+    {
+      "path": "src/routeTree.gen.ts",
+      "accessCount": 4,
+      "lastAccessed": 1774891503290,
+      "type": "file"
+    },
+    {
+      "path": "src",
+      "accessCount": 4,
+      "lastAccessed": 1774891538368,
+      "type": "directory"
     },
     {
       "path": "src/components/ProtectedRoute.tsx",
@@ -152,9 +188,39 @@
       "type": "file"
     },
     {
-      "path": "src/routeTree.gen.ts",
-      "accessCount": 2,
-      "lastAccessed": 1774866998258,
+      "path": "src/routes/__root.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1774891090138,
+      "type": "file"
+    },
+    {
+      "path": "src/types/database.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774891101134,
+      "type": "file"
+    },
+    {
+      "path": "src/features/auth/hooks/useAuth.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774891171505,
+      "type": "file"
+    },
+    {
+      "path": "src/features/auth/types/auth.types.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774891269733,
+      "type": "file"
+    },
+    {
+      "path": "src/features/auth/stores/authStore.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774891497302,
+      "type": "file"
+    },
+    {
+      "path": "src/main.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1774891503342,
       "type": "file"
     },
     {
@@ -164,39 +230,51 @@
       "type": "file"
     },
     {
-      "path": "src/routes/__root.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1774867095695,
-      "type": "file"
-    },
-    {
-      "path": "src/main.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1774867147917,
-      "type": "file"
-    },
-    {
       "path": "index.html",
       "accessCount": 2,
       "lastAccessed": 1774867176156,
       "type": "file"
     },
     {
-      "path": "src/routes/_auth.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1774866924233,
+      "path": "src/features/posts/hooks/usePosts.ts",
+      "accessCount": 2,
+      "lastAccessed": 1774891050554,
       "type": "file"
     },
     {
-      "path": "src/routes/login.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1774866924657,
+      "path": "package.json",
+      "accessCount": 2,
+      "lastAccessed": 1774891051539,
+      "type": "file"
+    },
+    {
+      "path": "src/lib/supabase.ts",
+      "accessCount": 2,
+      "lastAccessed": 1774891061188,
       "type": "file"
     },
     {
       "path": "src/router.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774891090190,
+      "type": "file"
+    },
+    {
+      "path": "src/routes/auth/_auth.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774891171450,
+      "type": "file"
+    },
+    {
+      "path": "src/components/AuthProvider.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774891497245,
+      "type": "file"
+    },
+    {
+      "path": "src/routes/_auth.tsx",
       "accessCount": 1,
-      "lastAccessed": 1774866924729,
+      "lastAccessed": 1774866924233,
       "type": "file"
     },
     {
@@ -212,12 +290,6 @@
       "type": "file"
     },
     {
-      "path": "package.json",
-      "accessCount": 1,
-      "lastAccessed": 1774866961121,
-      "type": "file"
-    },
-    {
       "path": "vite.config.ts",
       "accessCount": 1,
       "lastAccessed": 1774867005687,
@@ -228,6 +300,126 @@
       "accessCount": 1,
       "lastAccessed": 1774867160434,
       "type": "file"
+    },
+    {
+      "path": "src/hooks/use-mobile.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774890972178,
+      "type": "file"
+    },
+    {
+      "path": "src/features/usuarios/hooks/useUsuarios.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774890972328,
+      "type": "file"
+    },
+    {
+      "path": "src/features/auth/hooks/__tests__/useAuth.test.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774890979632,
+      "type": "file"
+    },
+    {
+      "path": "src/features/usuarios/hooks/__tests__/useUsuarios.test.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774890979702,
+      "type": "file"
+    },
+    {
+      "path": "src/features/usuarios/types/usuarios.types.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774890988800,
+      "type": "file"
+    },
+    {
+      "path": "src/types/index.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774890997482,
+      "type": "file"
+    },
+    {
+      "path": "src/types",
+      "accessCount": 1,
+      "lastAccessed": 1774891044167,
+      "type": "directory"
+    },
+    {
+      "path": "src/routes/auth/_auth.admin.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774891061082,
+      "type": "file"
+    },
+    {
+      "path": "src/features/auth/index.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774891073433,
+      "type": "file"
+    },
+    {
+      "path": "src/routes/index.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774891079466,
+      "type": "file"
+    },
+    {
+      "path": ".env",
+      "accessCount": 1,
+      "lastAccessed": 1774891096667,
+      "type": "file"
+    },
+    {
+      "path": "src/features/roles/hooks/useRoles.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774891217387,
+      "type": "file"
+    },
+    {
+      "path": "src/features/ausencias/hooks/useAusencias.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774891218122,
+      "type": "file"
+    },
+    {
+      "path": "src/features/horarios/hooks/useHorarios.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774891218450,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774891276447,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ui/card.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774891276459,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ui/input.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774891276502,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ui/label.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774891283921,
+      "type": "file"
+    },
+    {
+      "path": "src/routes/auth/callback.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774891292940,
+      "type": "file"
+    },
+    {
+      "path": "src/routes",
+      "accessCount": 1,
+      "lastAccessed": 1774891517439,
+      "type": "directory"
     }
   ],
   "userDirectives": []

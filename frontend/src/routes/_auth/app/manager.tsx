@@ -1,10 +1,22 @@
-// src/routes/_auth/app/manager.tsx
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import { authStore } from "#/features/auth/stores/authStore";
 
 export const Route = createFileRoute("/_auth/app/manager")({
-  component: ManagerLayout,
+	beforeLoad: ({ location }) => {
+		if (authStore.isLoading) {
+			return;
+		}
+		if (!authStore.isAuthenticated) {
+			throw redirect({
+				to: "/login",
+				search: { redirect: location.href },
+			});
+		}
+		if (!authStore.isManager) {
+			throw redirect({
+				to: "/unauthorized",
+			});
+		}
+	},
+	component: () => <Outlet />,
 });
-
-function ManagerLayout() {
-  return <Outlet />;
-}

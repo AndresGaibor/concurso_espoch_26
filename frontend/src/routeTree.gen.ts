@@ -9,13 +9,47 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UnauthorizedRouteImport } from './routes/unauthorized'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as GpsRouteImport } from './routes/gps'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthAppRouteImport } from './routes/_auth/app'
+import { Route as AuthAppIndexRouteImport } from './routes/_auth/app/index'
+import { Route as AuthAppProfileRouteImport } from './routes/_auth/app/profile'
+import { Route as AuthAppManagerRouteImport } from './routes/_auth/app/manager'
+import { Route as AuthAppEmployeeRouteImport } from './routes/_auth/app/employee'
+import { Route as AuthAppAdminRouteImport } from './routes/_auth/app/admin'
+import { Route as AuthAppManagerIndexRouteImport } from './routes/_auth/app/manager/index'
+import { Route as AuthAppEmployeeIndexRouteImport } from './routes/_auth/app/employee/index'
+import { Route as AuthAppAdminIndexRouteImport } from './routes/_auth/app/admin/index'
+import { Route as AuthAppManagerRequestsRouteImport } from './routes/_auth/app/manager/requests'
+import { Route as AuthAppManagerHistoryRouteImport } from './routes/_auth/app/manager/history'
+import { Route as AuthAppEmployeeHistoryRouteImport } from './routes/_auth/app/employee/history'
+import { Route as AuthAppEmployeeAttendanceRouteImport } from './routes/_auth/app/employee/attendance'
+import { Route as AuthAppEmployeeAbsencesRouteImport } from './routes/_auth/app/employee/absences'
+import { Route as AuthAppAdminUsersRouteImport } from './routes/_auth/app/admin/users'
+import { Route as AuthAppAdminSchedulesRouteImport } from './routes/_auth/app/admin/schedules'
+import { Route as AuthAppAdminLocationsRouteImport } from './routes/_auth/app/admin/locations'
+import { Route as AuthAppAdminAttendancesRouteImport } from './routes/_auth/app/admin/attendances'
+import { Route as AuthAppAdminAbsencesRouteImport } from './routes/_auth/app/admin/absences'
+import { Route as AuthAppManagerRequestsAbsenceIdRouteImport } from './routes/_auth/app/manager/requests.$absenceId'
+import { Route as AuthAppEmployeeAbsencesNewRouteImport } from './routes/_auth/app/employee/absences.new'
 
+const UnauthorizedRoute = UnauthorizedRouteImport.update({
+  id: '/unauthorized',
+  path: '/unauthorized',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GpsRoute = GpsRouteImport.update({
+  id: '/gps',
+  path: '/gps',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -23,49 +57,320 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/_auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthAppRoute = AuthAppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthAppIndexRoute = AuthAppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthAppRoute,
+} as any)
+const AuthAppProfileRoute = AuthAppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthAppRoute,
+} as any)
+const AuthAppManagerRoute = AuthAppManagerRouteImport.update({
+  id: '/manager',
+  path: '/manager',
+  getParentRoute: () => AuthAppRoute,
+} as any)
+const AuthAppEmployeeRoute = AuthAppEmployeeRouteImport.update({
+  id: '/employee',
+  path: '/employee',
+  getParentRoute: () => AuthAppRoute,
+} as any)
+const AuthAppAdminRoute = AuthAppAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthAppRoute,
+} as any)
+const AuthAppManagerIndexRoute = AuthAppManagerIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthAppManagerRoute,
+} as any)
+const AuthAppEmployeeIndexRoute = AuthAppEmployeeIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthAppEmployeeRoute,
+} as any)
+const AuthAppAdminIndexRoute = AuthAppAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthAppAdminRoute,
+} as any)
+const AuthAppManagerRequestsRoute = AuthAppManagerRequestsRouteImport.update({
+  id: '/requests',
+  path: '/requests',
+  getParentRoute: () => AuthAppManagerRoute,
+} as any)
+const AuthAppManagerHistoryRoute = AuthAppManagerHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AuthAppManagerRoute,
+} as any)
+const AuthAppEmployeeHistoryRoute = AuthAppEmployeeHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AuthAppEmployeeRoute,
+} as any)
+const AuthAppEmployeeAttendanceRoute =
+  AuthAppEmployeeAttendanceRouteImport.update({
+    id: '/attendance',
+    path: '/attendance',
+    getParentRoute: () => AuthAppEmployeeRoute,
+  } as any)
+const AuthAppEmployeeAbsencesRoute = AuthAppEmployeeAbsencesRouteImport.update({
+  id: '/absences',
+  path: '/absences',
+  getParentRoute: () => AuthAppEmployeeRoute,
+} as any)
+const AuthAppAdminUsersRoute = AuthAppAdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AuthAppAdminRoute,
+} as any)
+const AuthAppAdminSchedulesRoute = AuthAppAdminSchedulesRouteImport.update({
+  id: '/schedules',
+  path: '/schedules',
+  getParentRoute: () => AuthAppAdminRoute,
+} as any)
+const AuthAppAdminLocationsRoute = AuthAppAdminLocationsRouteImport.update({
+  id: '/locations',
+  path: '/locations',
+  getParentRoute: () => AuthAppAdminRoute,
+} as any)
+const AuthAppAdminAttendancesRoute = AuthAppAdminAttendancesRouteImport.update({
+  id: '/attendances',
+  path: '/attendances',
+  getParentRoute: () => AuthAppAdminRoute,
+} as any)
+const AuthAppAdminAbsencesRoute = AuthAppAdminAbsencesRouteImport.update({
+  id: '/absences',
+  path: '/absences',
+  getParentRoute: () => AuthAppAdminRoute,
+} as any)
+const AuthAppManagerRequestsAbsenceIdRoute =
+  AuthAppManagerRequestsAbsenceIdRouteImport.update({
+    id: '/$absenceId',
+    path: '/$absenceId',
+    getParentRoute: () => AuthAppManagerRequestsRoute,
+  } as any)
+const AuthAppEmployeeAbsencesNewRoute =
+  AuthAppEmployeeAbsencesNewRouteImport.update({
+    id: '/new',
+    path: '/new',
+    getParentRoute: () => AuthAppEmployeeAbsencesRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/gps': typeof GpsRoute
   '/login': typeof LoginRoute
+  '/unauthorized': typeof UnauthorizedRoute
+  '/app': typeof AuthAppRouteWithChildren
+  '/app/admin': typeof AuthAppAdminRouteWithChildren
+  '/app/employee': typeof AuthAppEmployeeRouteWithChildren
+  '/app/manager': typeof AuthAppManagerRouteWithChildren
+  '/app/profile': typeof AuthAppProfileRoute
+  '/app/': typeof AuthAppIndexRoute
+  '/app/admin/absences': typeof AuthAppAdminAbsencesRoute
+  '/app/admin/attendances': typeof AuthAppAdminAttendancesRoute
+  '/app/admin/locations': typeof AuthAppAdminLocationsRoute
+  '/app/admin/schedules': typeof AuthAppAdminSchedulesRoute
+  '/app/admin/users': typeof AuthAppAdminUsersRoute
+  '/app/employee/absences': typeof AuthAppEmployeeAbsencesRouteWithChildren
+  '/app/employee/attendance': typeof AuthAppEmployeeAttendanceRoute
+  '/app/employee/history': typeof AuthAppEmployeeHistoryRoute
+  '/app/manager/history': typeof AuthAppManagerHistoryRoute
+  '/app/manager/requests': typeof AuthAppManagerRequestsRouteWithChildren
+  '/app/admin/': typeof AuthAppAdminIndexRoute
+  '/app/employee/': typeof AuthAppEmployeeIndexRoute
+  '/app/manager/': typeof AuthAppManagerIndexRoute
+  '/app/employee/absences/new': typeof AuthAppEmployeeAbsencesNewRoute
+  '/app/manager/requests/$absenceId': typeof AuthAppManagerRequestsAbsenceIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/gps': typeof GpsRoute
   '/login': typeof LoginRoute
+  '/unauthorized': typeof UnauthorizedRoute
+  '/app/profile': typeof AuthAppProfileRoute
+  '/app': typeof AuthAppIndexRoute
+  '/app/admin/absences': typeof AuthAppAdminAbsencesRoute
+  '/app/admin/attendances': typeof AuthAppAdminAttendancesRoute
+  '/app/admin/locations': typeof AuthAppAdminLocationsRoute
+  '/app/admin/schedules': typeof AuthAppAdminSchedulesRoute
+  '/app/admin/users': typeof AuthAppAdminUsersRoute
+  '/app/employee/absences': typeof AuthAppEmployeeAbsencesRouteWithChildren
+  '/app/employee/attendance': typeof AuthAppEmployeeAttendanceRoute
+  '/app/employee/history': typeof AuthAppEmployeeHistoryRoute
+  '/app/manager/history': typeof AuthAppManagerHistoryRoute
+  '/app/manager/requests': typeof AuthAppManagerRequestsRouteWithChildren
+  '/app/admin': typeof AuthAppAdminIndexRoute
+  '/app/employee': typeof AuthAppEmployeeIndexRoute
+  '/app/manager': typeof AuthAppManagerIndexRoute
+  '/app/employee/absences/new': typeof AuthAppEmployeeAbsencesNewRoute
+  '/app/manager/requests/$absenceId': typeof AuthAppManagerRequestsAbsenceIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_auth': typeof AuthRouteWithChildren
   '/about': typeof AboutRoute
+  '/gps': typeof GpsRoute
   '/login': typeof LoginRoute
+  '/unauthorized': typeof UnauthorizedRoute
+  '/_auth/app': typeof AuthAppRouteWithChildren
+  '/_auth/app/admin': typeof AuthAppAdminRouteWithChildren
+  '/_auth/app/employee': typeof AuthAppEmployeeRouteWithChildren
+  '/_auth/app/manager': typeof AuthAppManagerRouteWithChildren
+  '/_auth/app/profile': typeof AuthAppProfileRoute
+  '/_auth/app/': typeof AuthAppIndexRoute
+  '/_auth/app/admin/absences': typeof AuthAppAdminAbsencesRoute
+  '/_auth/app/admin/attendances': typeof AuthAppAdminAttendancesRoute
+  '/_auth/app/admin/locations': typeof AuthAppAdminLocationsRoute
+  '/_auth/app/admin/schedules': typeof AuthAppAdminSchedulesRoute
+  '/_auth/app/admin/users': typeof AuthAppAdminUsersRoute
+  '/_auth/app/employee/absences': typeof AuthAppEmployeeAbsencesRouteWithChildren
+  '/_auth/app/employee/attendance': typeof AuthAppEmployeeAttendanceRoute
+  '/_auth/app/employee/history': typeof AuthAppEmployeeHistoryRoute
+  '/_auth/app/manager/history': typeof AuthAppManagerHistoryRoute
+  '/_auth/app/manager/requests': typeof AuthAppManagerRequestsRouteWithChildren
+  '/_auth/app/admin/': typeof AuthAppAdminIndexRoute
+  '/_auth/app/employee/': typeof AuthAppEmployeeIndexRoute
+  '/_auth/app/manager/': typeof AuthAppManagerIndexRoute
+  '/_auth/app/employee/absences/new': typeof AuthAppEmployeeAbsencesNewRoute
+  '/_auth/app/manager/requests/$absenceId': typeof AuthAppManagerRequestsAbsenceIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/login'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/gps'
+    | '/login'
+    | '/unauthorized'
+    | '/app'
+    | '/app/admin'
+    | '/app/employee'
+    | '/app/manager'
+    | '/app/profile'
+    | '/app/'
+    | '/app/admin/absences'
+    | '/app/admin/attendances'
+    | '/app/admin/locations'
+    | '/app/admin/schedules'
+    | '/app/admin/users'
+    | '/app/employee/absences'
+    | '/app/employee/attendance'
+    | '/app/employee/history'
+    | '/app/manager/history'
+    | '/app/manager/requests'
+    | '/app/admin/'
+    | '/app/employee/'
+    | '/app/manager/'
+    | '/app/employee/absences/new'
+    | '/app/manager/requests/$absenceId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/login'
-  id: '__root__' | '/' | '/about' | '/login'
+  to:
+    | '/'
+    | '/about'
+    | '/gps'
+    | '/login'
+    | '/unauthorized'
+    | '/app/profile'
+    | '/app'
+    | '/app/admin/absences'
+    | '/app/admin/attendances'
+    | '/app/admin/locations'
+    | '/app/admin/schedules'
+    | '/app/admin/users'
+    | '/app/employee/absences'
+    | '/app/employee/attendance'
+    | '/app/employee/history'
+    | '/app/manager/history'
+    | '/app/manager/requests'
+    | '/app/admin'
+    | '/app/employee'
+    | '/app/manager'
+    | '/app/employee/absences/new'
+    | '/app/manager/requests/$absenceId'
+  id:
+    | '__root__'
+    | '/'
+    | '/_auth'
+    | '/about'
+    | '/gps'
+    | '/login'
+    | '/unauthorized'
+    | '/_auth/app'
+    | '/_auth/app/admin'
+    | '/_auth/app/employee'
+    | '/_auth/app/manager'
+    | '/_auth/app/profile'
+    | '/_auth/app/'
+    | '/_auth/app/admin/absences'
+    | '/_auth/app/admin/attendances'
+    | '/_auth/app/admin/locations'
+    | '/_auth/app/admin/schedules'
+    | '/_auth/app/admin/users'
+    | '/_auth/app/employee/absences'
+    | '/_auth/app/employee/attendance'
+    | '/_auth/app/employee/history'
+    | '/_auth/app/manager/history'
+    | '/_auth/app/manager/requests'
+    | '/_auth/app/admin/'
+    | '/_auth/app/employee/'
+    | '/_auth/app/manager/'
+    | '/_auth/app/employee/absences/new'
+    | '/_auth/app/manager/requests/$absenceId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRouteWithChildren
   AboutRoute: typeof AboutRoute
+  GpsRoute: typeof GpsRoute
   LoginRoute: typeof LoginRoute
+  UnauthorizedRoute: typeof UnauthorizedRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/unauthorized': {
+      id: '/unauthorized'
+      path: '/unauthorized'
+      fullPath: '/unauthorized'
+      preLoaderRoute: typeof UnauthorizedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gps': {
+      id: '/gps'
+      path: '/gps'
+      fullPath: '/gps'
+      preLoaderRoute: typeof GpsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -75,6 +380,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -82,13 +394,276 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_auth/app': {
+      id: '/_auth/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AuthAppRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/app/': {
+      id: '/_auth/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AuthAppIndexRouteImport
+      parentRoute: typeof AuthAppRoute
+    }
+    '/_auth/app/profile': {
+      id: '/_auth/app/profile'
+      path: '/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AuthAppProfileRouteImport
+      parentRoute: typeof AuthAppRoute
+    }
+    '/_auth/app/manager': {
+      id: '/_auth/app/manager'
+      path: '/manager'
+      fullPath: '/app/manager'
+      preLoaderRoute: typeof AuthAppManagerRouteImport
+      parentRoute: typeof AuthAppRoute
+    }
+    '/_auth/app/employee': {
+      id: '/_auth/app/employee'
+      path: '/employee'
+      fullPath: '/app/employee'
+      preLoaderRoute: typeof AuthAppEmployeeRouteImport
+      parentRoute: typeof AuthAppRoute
+    }
+    '/_auth/app/admin': {
+      id: '/_auth/app/admin'
+      path: '/admin'
+      fullPath: '/app/admin'
+      preLoaderRoute: typeof AuthAppAdminRouteImport
+      parentRoute: typeof AuthAppRoute
+    }
+    '/_auth/app/manager/': {
+      id: '/_auth/app/manager/'
+      path: '/'
+      fullPath: '/app/manager/'
+      preLoaderRoute: typeof AuthAppManagerIndexRouteImport
+      parentRoute: typeof AuthAppManagerRoute
+    }
+    '/_auth/app/employee/': {
+      id: '/_auth/app/employee/'
+      path: '/'
+      fullPath: '/app/employee/'
+      preLoaderRoute: typeof AuthAppEmployeeIndexRouteImport
+      parentRoute: typeof AuthAppEmployeeRoute
+    }
+    '/_auth/app/admin/': {
+      id: '/_auth/app/admin/'
+      path: '/'
+      fullPath: '/app/admin/'
+      preLoaderRoute: typeof AuthAppAdminIndexRouteImport
+      parentRoute: typeof AuthAppAdminRoute
+    }
+    '/_auth/app/manager/requests': {
+      id: '/_auth/app/manager/requests'
+      path: '/requests'
+      fullPath: '/app/manager/requests'
+      preLoaderRoute: typeof AuthAppManagerRequestsRouteImport
+      parentRoute: typeof AuthAppManagerRoute
+    }
+    '/_auth/app/manager/history': {
+      id: '/_auth/app/manager/history'
+      path: '/history'
+      fullPath: '/app/manager/history'
+      preLoaderRoute: typeof AuthAppManagerHistoryRouteImport
+      parentRoute: typeof AuthAppManagerRoute
+    }
+    '/_auth/app/employee/history': {
+      id: '/_auth/app/employee/history'
+      path: '/history'
+      fullPath: '/app/employee/history'
+      preLoaderRoute: typeof AuthAppEmployeeHistoryRouteImport
+      parentRoute: typeof AuthAppEmployeeRoute
+    }
+    '/_auth/app/employee/attendance': {
+      id: '/_auth/app/employee/attendance'
+      path: '/attendance'
+      fullPath: '/app/employee/attendance'
+      preLoaderRoute: typeof AuthAppEmployeeAttendanceRouteImport
+      parentRoute: typeof AuthAppEmployeeRoute
+    }
+    '/_auth/app/employee/absences': {
+      id: '/_auth/app/employee/absences'
+      path: '/absences'
+      fullPath: '/app/employee/absences'
+      preLoaderRoute: typeof AuthAppEmployeeAbsencesRouteImport
+      parentRoute: typeof AuthAppEmployeeRoute
+    }
+    '/_auth/app/admin/users': {
+      id: '/_auth/app/admin/users'
+      path: '/users'
+      fullPath: '/app/admin/users'
+      preLoaderRoute: typeof AuthAppAdminUsersRouteImport
+      parentRoute: typeof AuthAppAdminRoute
+    }
+    '/_auth/app/admin/schedules': {
+      id: '/_auth/app/admin/schedules'
+      path: '/schedules'
+      fullPath: '/app/admin/schedules'
+      preLoaderRoute: typeof AuthAppAdminSchedulesRouteImport
+      parentRoute: typeof AuthAppAdminRoute
+    }
+    '/_auth/app/admin/locations': {
+      id: '/_auth/app/admin/locations'
+      path: '/locations'
+      fullPath: '/app/admin/locations'
+      preLoaderRoute: typeof AuthAppAdminLocationsRouteImport
+      parentRoute: typeof AuthAppAdminRoute
+    }
+    '/_auth/app/admin/attendances': {
+      id: '/_auth/app/admin/attendances'
+      path: '/attendances'
+      fullPath: '/app/admin/attendances'
+      preLoaderRoute: typeof AuthAppAdminAttendancesRouteImport
+      parentRoute: typeof AuthAppAdminRoute
+    }
+    '/_auth/app/admin/absences': {
+      id: '/_auth/app/admin/absences'
+      path: '/absences'
+      fullPath: '/app/admin/absences'
+      preLoaderRoute: typeof AuthAppAdminAbsencesRouteImport
+      parentRoute: typeof AuthAppAdminRoute
+    }
+    '/_auth/app/manager/requests/$absenceId': {
+      id: '/_auth/app/manager/requests/$absenceId'
+      path: '/$absenceId'
+      fullPath: '/app/manager/requests/$absenceId'
+      preLoaderRoute: typeof AuthAppManagerRequestsAbsenceIdRouteImport
+      parentRoute: typeof AuthAppManagerRequestsRoute
+    }
+    '/_auth/app/employee/absences/new': {
+      id: '/_auth/app/employee/absences/new'
+      path: '/new'
+      fullPath: '/app/employee/absences/new'
+      preLoaderRoute: typeof AuthAppEmployeeAbsencesNewRouteImport
+      parentRoute: typeof AuthAppEmployeeAbsencesRoute
+    }
   }
 }
 
+interface AuthAppAdminRouteChildren {
+  AuthAppAdminAbsencesRoute: typeof AuthAppAdminAbsencesRoute
+  AuthAppAdminAttendancesRoute: typeof AuthAppAdminAttendancesRoute
+  AuthAppAdminLocationsRoute: typeof AuthAppAdminLocationsRoute
+  AuthAppAdminSchedulesRoute: typeof AuthAppAdminSchedulesRoute
+  AuthAppAdminUsersRoute: typeof AuthAppAdminUsersRoute
+  AuthAppAdminIndexRoute: typeof AuthAppAdminIndexRoute
+}
+
+const AuthAppAdminRouteChildren: AuthAppAdminRouteChildren = {
+  AuthAppAdminAbsencesRoute: AuthAppAdminAbsencesRoute,
+  AuthAppAdminAttendancesRoute: AuthAppAdminAttendancesRoute,
+  AuthAppAdminLocationsRoute: AuthAppAdminLocationsRoute,
+  AuthAppAdminSchedulesRoute: AuthAppAdminSchedulesRoute,
+  AuthAppAdminUsersRoute: AuthAppAdminUsersRoute,
+  AuthAppAdminIndexRoute: AuthAppAdminIndexRoute,
+}
+
+const AuthAppAdminRouteWithChildren = AuthAppAdminRoute._addFileChildren(
+  AuthAppAdminRouteChildren,
+)
+
+interface AuthAppEmployeeAbsencesRouteChildren {
+  AuthAppEmployeeAbsencesNewRoute: typeof AuthAppEmployeeAbsencesNewRoute
+}
+
+const AuthAppEmployeeAbsencesRouteChildren: AuthAppEmployeeAbsencesRouteChildren =
+  {
+    AuthAppEmployeeAbsencesNewRoute: AuthAppEmployeeAbsencesNewRoute,
+  }
+
+const AuthAppEmployeeAbsencesRouteWithChildren =
+  AuthAppEmployeeAbsencesRoute._addFileChildren(
+    AuthAppEmployeeAbsencesRouteChildren,
+  )
+
+interface AuthAppEmployeeRouteChildren {
+  AuthAppEmployeeAbsencesRoute: typeof AuthAppEmployeeAbsencesRouteWithChildren
+  AuthAppEmployeeAttendanceRoute: typeof AuthAppEmployeeAttendanceRoute
+  AuthAppEmployeeHistoryRoute: typeof AuthAppEmployeeHistoryRoute
+  AuthAppEmployeeIndexRoute: typeof AuthAppEmployeeIndexRoute
+}
+
+const AuthAppEmployeeRouteChildren: AuthAppEmployeeRouteChildren = {
+  AuthAppEmployeeAbsencesRoute: AuthAppEmployeeAbsencesRouteWithChildren,
+  AuthAppEmployeeAttendanceRoute: AuthAppEmployeeAttendanceRoute,
+  AuthAppEmployeeHistoryRoute: AuthAppEmployeeHistoryRoute,
+  AuthAppEmployeeIndexRoute: AuthAppEmployeeIndexRoute,
+}
+
+const AuthAppEmployeeRouteWithChildren = AuthAppEmployeeRoute._addFileChildren(
+  AuthAppEmployeeRouteChildren,
+)
+
+interface AuthAppManagerRequestsRouteChildren {
+  AuthAppManagerRequestsAbsenceIdRoute: typeof AuthAppManagerRequestsAbsenceIdRoute
+}
+
+const AuthAppManagerRequestsRouteChildren: AuthAppManagerRequestsRouteChildren =
+  {
+    AuthAppManagerRequestsAbsenceIdRoute: AuthAppManagerRequestsAbsenceIdRoute,
+  }
+
+const AuthAppManagerRequestsRouteWithChildren =
+  AuthAppManagerRequestsRoute._addFileChildren(
+    AuthAppManagerRequestsRouteChildren,
+  )
+
+interface AuthAppManagerRouteChildren {
+  AuthAppManagerHistoryRoute: typeof AuthAppManagerHistoryRoute
+  AuthAppManagerRequestsRoute: typeof AuthAppManagerRequestsRouteWithChildren
+  AuthAppManagerIndexRoute: typeof AuthAppManagerIndexRoute
+}
+
+const AuthAppManagerRouteChildren: AuthAppManagerRouteChildren = {
+  AuthAppManagerHistoryRoute: AuthAppManagerHistoryRoute,
+  AuthAppManagerRequestsRoute: AuthAppManagerRequestsRouteWithChildren,
+  AuthAppManagerIndexRoute: AuthAppManagerIndexRoute,
+}
+
+const AuthAppManagerRouteWithChildren = AuthAppManagerRoute._addFileChildren(
+  AuthAppManagerRouteChildren,
+)
+
+interface AuthAppRouteChildren {
+  AuthAppAdminRoute: typeof AuthAppAdminRouteWithChildren
+  AuthAppEmployeeRoute: typeof AuthAppEmployeeRouteWithChildren
+  AuthAppManagerRoute: typeof AuthAppManagerRouteWithChildren
+  AuthAppProfileRoute: typeof AuthAppProfileRoute
+  AuthAppIndexRoute: typeof AuthAppIndexRoute
+}
+
+const AuthAppRouteChildren: AuthAppRouteChildren = {
+  AuthAppAdminRoute: AuthAppAdminRouteWithChildren,
+  AuthAppEmployeeRoute: AuthAppEmployeeRouteWithChildren,
+  AuthAppManagerRoute: AuthAppManagerRouteWithChildren,
+  AuthAppProfileRoute: AuthAppProfileRoute,
+  AuthAppIndexRoute: AuthAppIndexRoute,
+}
+
+const AuthAppRouteWithChildren =
+  AuthAppRoute._addFileChildren(AuthAppRouteChildren)
+
+interface AuthRouteChildren {
+  AuthAppRoute: typeof AuthAppRouteWithChildren
+}
+
+const AuthRouteChildren: AuthRouteChildren = {
+  AuthAppRoute: AuthAppRouteWithChildren,
+}
+
+const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRouteWithChildren,
   AboutRoute: AboutRoute,
+  GpsRoute: GpsRoute,
   LoginRoute: LoginRoute,
+  UnauthorizedRoute: UnauthorizedRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
