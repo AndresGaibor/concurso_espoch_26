@@ -1,36 +1,29 @@
 {
+  "include": ["**/*.ts", "**/*.tsx"],
   "compilerOptions": {
-    // Environment setup & latest features
-    "lib": ["ESNext", "DOM"],
-    "target": "ESNext",
-    "module": "Preserve",
-    "moduleDetection": "force",
+    "target": "ES2022",
     "jsx": "react-jsx",
-    "allowJs": true,
+    "module": "ESNext",
+    "baseUrl": ".",
+    "paths": {
+      "#/*": ["./src/*"],
+      "@/*": ["./src/*"]
+    },
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
 
-    // Bundler mode
+    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
 
-    // Best practices
-    "strict": true,
+    /* Linting */
     "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-
-    // Some stricter flags (disabled by default)
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false
-  },
-
-  "exclude": ["dist", "node_modules"]
+    "noUncheckedSideEffectImports": true
+  }
 }
