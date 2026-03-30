@@ -6,24 +6,32 @@
     "#/*": "./src/*"
   },
   "scripts": {
-    "dev": "vite dev --port 3000",
+    "dev": "bun run db:types && vite dev --port 3000",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "check": "biome check .",
     "check:fix": "biome check --write .",
+    "db:types": "supabase gen types typescript --project-id wvvattvssuwbhbgenhra --schema public > src/types/database.ts",
     "typecheck": "tsc -p tsconfig.json --pretty false",
     "format": "biome format --write ."
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@supabase/supabase-js": "^2.100.1",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "latest",
     "@tanstack/react-router": "latest",
     "@tanstack/react-router-devtools": "latest",
-    "lucide-react": "^0.545.0",
+    "class-variance-authority": "^0.7.1",
+    "install": "^0.13.0",
+    "lucide-react": "^1.7.0",
+    "radix-ui": "^1.4.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "tailwindcss": "^4.1.18"
+    "react-hook-form": "^7.72.0",
+    "tailwindcss": "^4.1.18",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.9",

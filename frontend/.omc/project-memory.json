@@ -1,0 +1,143 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1774861761384,
+  "projectRoot": "/Users/andresgaibor/code/javascript/concurso/frontend",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "react",
+        "version": "19.2.0",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "19.2.0",
+        "category": "frontend"
+      },
+      {
+        "name": "vite",
+        "version": "7.3.1",
+        "category": "build"
+      },
+      {
+        "name": "vitest",
+        "version": "3.0.5",
+        "category": "testing"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": "npm test",
+    "lintCommand": null,
+    "devCommand": "npm run dev",
+    "scripts": {
+      "dev": "vite dev --port 3000",
+      "build": "vite build",
+      "preview": "vite preview",
+      "test": "vitest run",
+      "check": "biome check .",
+      "check:fix": "biome check --write .",
+      "typecheck": "tsc -p tsconfig.json --pretty false",
+      "format": "biome format --write ."
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": "feature-based"
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "public",
+      "src"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 5,
+      "lastAccessed": 1774861761364,
+      "keyFiles": [
+        "favicon.ico",
+        "logo192.png",
+        "logo512.png",
+        "manifest.json",
+        "robots.txt"
+      ]
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 12,
+      "lastAccessed": 1774861761364,
+      "keyFiles": [
+        "APITester.tsx",
+        "App.tsx",
+        "frontend.tsx",
+        "index.css",
+        "index.html"
+      ]
+    },
+    "styles": {
+      "path": "styles",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1774861761370,
+      "keyFiles": [
+        "globals.css"
+      ]
+    },
+    "src/components": {
+      "path": "src/components",
+      "purpose": "UI components",
+      "fileCount": 3,
+      "lastAccessed": 1774861761371,
+      "keyFiles": [
+        "Footer.tsx",
+        "Header.tsx",
+        "ThemeToggle.tsx"
+      ]
+    },
+    "src/lib": {
+      "path": "src/lib",
+      "purpose": "Library code",
+      "fileCount": 1,
+      "lastAccessed": 1774861761372,
+      "keyFiles": [
+        "utils.ts"
+      ]
+    }
+  },
+  "hotPaths": [],
+  "userDirectives": []
+}

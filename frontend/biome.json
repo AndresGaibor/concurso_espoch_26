@@ -11,17 +11,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "ignoreUnknown": false,
-    "ignore": [
-      "dist",
-      "build",
-      "node_modules",
-      "coverage",
-      "public",
-      "src/assets",
-      "src/styles",
-      "**/routeTree.gen.ts"
-    ]
+    "ignoreUnknown": false
   },
   "formatter": {
     "enabled": true,
