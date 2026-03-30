@@ -1,11 +1,9 @@
-// src/routes/login.tsx
-import { createFileRoute, redirect } from "@tanstack/react-router";
-import { supabase } from "#/lib/supabase";
+import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/login")({
-  component: LoginPage,
+	component: LoginPage,
 });
 
 function LoginPage() {
-  return <div>Login form aquí</div>;
+	return <div>Login form aquí</div>;
 }
