@@ -3,7 +3,6 @@ import type { Database } from "#/types/database";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey =
-  import.meta.env.VITE_SUPABASE_KEY ??
   import.meta.env.VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY;
 
 if (!supabaseUrl) {
